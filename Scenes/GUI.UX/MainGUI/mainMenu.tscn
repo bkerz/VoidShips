@@ -24,8 +24,7 @@ offset_right = 167.0
 offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Jugar
-"
+text = "Acá está el cambio"
 
 [node name="Cerrar" type="Button" parent="Control"]
 layout_mode = 1
