@@ -1,23 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dn7q7id3q2b70"]
+[gd_scene load_steps=6 format=3 uid="uid://dn7q7id3q2b70"]
 
-[ext_resource type="Texture2D" uid="uid://wfv6j7pda10g" path="res://OjoVolador.png" id="1_x7qas"]
-
-[sub_resource type="Animation" id="Animation_cbopf"]
-resource_name = "Walk"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
-}
+[ext_resource type="Texture2D" uid="uid://bguwppf42w2dg" path="res://Scenes/Ennemys/Eye/OjoVolador.png" id="1_nsxj2"]
 
 [sub_resource type="Animation" id="Animation_4npps"]
 length = 0.001
@@ -34,20 +17,45 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_cbopf"]
+resource_name = "Walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ncbu4"]
 _data = {
 "RESET": SubResource("Animation_4npps"),
 "Walk": SubResource("Animation_cbopf")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_eg5ev"]
+radius = 8.0
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_x7qas")
+texture = ExtResource("1_nsxj2")
 hframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ncbu4")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("CircleShape2D_eg5ev")

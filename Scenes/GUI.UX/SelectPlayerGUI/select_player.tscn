@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlkxvimdlvha"]
+
+[ext_resource type="Script" path="res://Scenes/GUI.UX/SelectPlayerGUI/Scripts/select_playerScript.gd" id="1_e1uvt"]
+
+[node name="SelectPlayer" type="Node2D"]
+script = ExtResource("1_e1uvt")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1149.0
+offset_bottom = 646.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 319.0
+offset_bottom = 361.0
+text = "Max"
