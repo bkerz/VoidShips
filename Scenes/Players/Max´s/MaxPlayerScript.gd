@@ -11,6 +11,7 @@ func _ready():
 
 func _input(event):
 	var input_direction = Input.get_vector("A","D","W","S")
+	get_tree().call_group("enemy","setPosition")
 	GLOBALMANAGER.posicionGlobalPersonaje = global_position
 	velocity = input_direction * speed
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cturklof8iwho"]
+[gd_scene load_steps=8 format=3 uid="uid://cturklof8iwho"]
 
-[ext_resource type="Script" path="res://Scenes/Ennemys/Slime/Scripts/slime_enemy_Script.gd" id="1_q081e"]
+[ext_resource type="Script" path="res://Scenes/Ennemys/Slime/slime_enemy_Script.gd" id="1_d3ywf"]
 [ext_resource type="Texture2D" uid="uid://cyphbggkpki51" path="res://Scenes/Ennemys/Slime/EnemigoSlime.png" id="1_yaqpk"]
 
 [sub_resource type="Animation" id="Animation_c2q25"]
@@ -44,12 +44,15 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_l6wtq"]
 radius = 6.0
 
-[node name="SlimeEnemy" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_parex"]
+radius = 107.5
+
+[node name="SlimeEnemy" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(0, -1)
 scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_q081e")
+script = ExtResource("1_d3ywf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -64,3 +67,8 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_l6wtq")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_parex")

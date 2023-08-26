@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://byfqd3ldkyqvh"]
 
-[ext_resource type="Script" path="res://Scenes/Players/Max´s/Scripts/MaxPlayerScript.gd" id="1_utpku"]
+[ext_resource type="Script" path="res://Scenes/Players/Max´s/MaxPlayerScript.gd" id="1_s5sgb"]
 [ext_resource type="Texture2D" uid="uid://o7csblf8qaf1" path="res://icon.svg" id="2_scp04"]
-[ext_resource type="Script" path="res://Scenes/Players/Max´s/Scripts/areaDeAtaqueScript.gd" id="3_hmc84"]
+[ext_resource type="Script" path="res://Scenes/Players/Max´s/areaDeAtaqueScript.gd" id="3_lhv1y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ty0mc"]
 size = Vector2(69, 86)
@@ -12,7 +12,7 @@ size = Vector2(35, 70)
 
 [node name="MaxPlayer" type="CharacterBody2D"]
 scale = Vector2(0.2, 0.2)
-script = ExtResource("1_utpku")
+script = ExtResource("1_s5sgb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ty0mc")
@@ -23,7 +23,7 @@ scale = Vector2(0.453125, 0.554688)
 texture = ExtResource("2_scp04")
 
 [node name="areaDeAtaque" type="Area2D" parent="."]
-script = ExtResource("3_hmc84")
+script = ExtResource("3_lhv1y")
 
 [node name="colisionDeAtaque" type="CollisionShape2D" parent="areaDeAtaque"]
 position = Vector2(62.5, -2.98023e-06)
