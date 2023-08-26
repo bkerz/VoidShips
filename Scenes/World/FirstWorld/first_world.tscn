@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://7k8edk04vjj"]
+
+[ext_resource type="PackedScene" uid="uid://byfqd3ldkyqvh" path="res://Scenes/Players/Max´s/max_player.tscn" id="1_6npro"]
+[ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/first_worldScript.gd" id="1_qp6ut"]
+[ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/MenuGUIScript.gd" id="3_ct034"]
+[ext_resource type="PackedScene" uid="uid://cturklof8iwho" path="res://Scenes/Ennemys/Slime/slime_enemy.tscn" id="3_yu0bt"]
+
+[sub_resource type="Theme" id="Theme_8umrj"]
+
+[node name="FirstWorld" type="Node2D"]
+script = ExtResource("1_qp6ut")
+
+[node name="Fondo" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="ColorRect" type="ColorRect" parent="Fondo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_8umrj")
+color = Color(0.00392157, 0.0352941, 0.117647, 1)
+
+[node name="MaxPlayer" parent="." instance=ExtResource("1_6npro")]
+position = Vector2(563, 333)
+
+[node name="MenuGUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 359.0
+offset_top = 57.0
+offset_right = 745.0
+offset_bottom = 582.0
+script = ExtResource("3_ct034")
+
+[node name="ColorRect" type="ColorRect" parent="MenuGUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="Seguir" type="Button" parent="MenuGUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.5
+offset_top = -23.0
+offset_right = 92.5
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Seguir"
+
+[node name="Salir" type="Button" parent="MenuGUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -31.0
+offset_right = 21.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Salir"
+
+[node name="SlimeEnemy" parent="." instance=ExtResource("3_yu0bt")]
+position = Vector2(366, 333)
+
+[connection signal="button_down" from="MenuGUI/Seguir" to="MenuGUI" method="_on_seguir_button_down"]
+[connection signal="button_down" from="MenuGUI/Salir" to="MenuGUI" method="_on_salir_button_down"]

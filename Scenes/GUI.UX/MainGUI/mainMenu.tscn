@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://de3pyloraube4"]
+
+[ext_resource type="Script" path="res://Scenes/GUI.UX/MainGUI/mainMenuScript.gd" id="1_egawk"]
+
+[node name="MenuPrincipal" type="Node2D"]
+script = ExtResource("1_egawk")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Iniciar" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -167.0
+offset_top = -44.0
+offset_right = 167.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Jugar
+"
+
+[node name="Cerrar" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -31.0
+offset_right = 21.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Salir"
+
+[connection signal="button_down" from="Control/Iniciar" to="." method="_on_iniciar_button_down"]
+[connection signal="button_down" from="Control/Cerrar" to="." method="_on_cerrar_button_down"]
