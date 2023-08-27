@@ -11,8 +11,13 @@ assignees: ''
 ------------------------------------------------------------------------------------------------------------------------------
 _Descripción_
 
-**Para tener en cuenta (opcional):**
-_Cualquier aclaración sobte la tarea_
+------------------------------------------------------------------------------------------------------------------------------
+**Cualquier aclaración sobre la tarea**
+'''
+°Aclaracion 1
+°Aclaracion 2
+'''
+
 
 **Subtareas** (opcional)
 - [ ] Subtarea 1
