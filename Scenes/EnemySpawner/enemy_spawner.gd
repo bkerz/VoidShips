@@ -8,13 +8,10 @@ const extremoSuperior= 60
 var enemiPosRandom= Vector2(0,0)
 var randomizePos = RandomNumberGenerator.new()
 
-func _ready():
-
-	if enemy_list.size() > 0:
-		for n in range(10):
-			randomizePos.randomize()
-			enemiPosRandom.x = randomizePos.randi_range(extremoIzquiero,extremoDerecho)
-			enemiPosRandom.y = extremoSuperior
-			var enemy_instance = enemy_list.pick_random().instantiate()
-			enemy_instance.position = enemiPosRandom
-			add_child(enemy_instance)
+func _on_timer_timeout():
+		randomizePos.randomize()
+		enemiPosRandom.x = randomizePos.randi_range(extremoIzquiero,extremoDerecho)
+		enemiPosRandom.y = extremoSuperior
+		var enemy_instance = enemy_list.pick_random().instantiate()
+		enemy_instance.position = enemiPosRandom
+		add_child(enemy_instance)
