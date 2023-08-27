@@ -29,7 +29,7 @@ theme = SubResource("Theme_8umrj")
 color = Color(0.00392157, 0.0352941, 0.117647, 1)
 
 [node name="MaxPlayer" parent="." instance=ExtResource("1_6npro")]
-position = Vector2(563, 333)
+position = Vector2(537, 331)
 
 [node name="MenuGUI" type="Control" parent="."]
 visible = false

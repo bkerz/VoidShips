@@ -1,18 +1,53 @@
 [gd_scene load_steps=2 format=3 uid="uid://dlkxvimdlvha"]
 
-[ext_resource type="Script" path="res://Scenes/GUI.UX/SelectPlayerGUI/Scripts/select_playerScript.gd" id="1_e1uvt"]
+[ext_resource type="Script" path="res://Scenes/GUI.UX/SelectPlayerGUI/select_playerScript.gd" id="1_jghhr"]
 
 [node name="SelectPlayer" type="Node2D"]
-script = ExtResource("1_e1uvt")
+script = ExtResource("1_jghhr")
 
-[node name="Control" type="Control" parent="."]
+[node name="EscenaGUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1149.0
 offset_bottom = 646.0
 
-[node name="Button" type="Button" parent="Control"]
+[node name="Button" type="Button" parent="EscenaGUI"]
 layout_mode = 0
-offset_right = 319.0
-offset_bottom = 361.0
-text = "Max"
+offset_left = 410.0
+offset_top = 217.0
+offset_right = 729.0
+offset_bottom = 271.0
+text = "Max (Melee)"
+
+[node name="Button2" type="Button" parent="EscenaGUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.5
+offset_top = -31.0
+offset_right = 48.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "Ir al Mundo"
+
+[node name="Button3" type="Button" parent="EscenaGUI"]
+layout_mode = 0
+offset_left = 1082.0
+offset_top = 12.0
+offset_right = 1139.0
+offset_bottom = 43.0
+text = "Volver"
+
+[node name="Aviso Seleccion" type="Label" parent="EscenaGUI"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 18.0
+offset_right = 739.0
+offset_bottom = 61.0
+theme_override_font_sizes/font_size = 29
+text = "Seleccione un personaje"
+
+[connection signal="button_down" from="EscenaGUI/Button2" to="." method="_on_button_2_button_down"]
