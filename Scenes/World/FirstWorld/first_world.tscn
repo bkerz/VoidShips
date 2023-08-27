@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://7k8edk04vjj"]
 
-[ext_resource type="PackedScene" uid="uid://byfqd3ldkyqvh" path="res://Scenes/Players/Max´s/max_player.tscn" id="1_6npro"]
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/first_worldScript.gd" id="1_qp6ut"]
 [ext_resource type="PackedScene" uid="uid://d1hi1ajleb7a4" path="res://Scenes/Ennemys/Snake/EnemySnake.tscn" id="3_0nxxg"]
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/MenuGUIScript.gd" id="3_ct034"]
+[ext_resource type="PackedScene" uid="uid://br1h424kd45pe" path="res://Scenes/Players/PlayerSpawner/player_espawner.tscn" id="3_oty85"]
 [ext_resource type="PackedScene" uid="uid://cturklof8iwho" path="res://Scenes/Ennemys/Slime/slime_enemy.tscn" id="3_yu0bt"]
 [ext_resource type="PackedScene" uid="uid://cfj2cpyebf7ag" path="res://Scenes/EnemySpawner/enemy_spawner.tscn" id="6_7vjqr"]
 
@@ -27,9 +27,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_8umrj")
 color = Color(0.00392157, 0.0352941, 0.117647, 1)
-
-[node name="MaxPlayer" parent="." instance=ExtResource("1_6npro")]
-position = Vector2(537, 331)
 
 [node name="MenuGUI" type="Control" parent="."]
 visible = false
@@ -79,7 +76,8 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Salir"
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="PlayerEspawner" parent="." instance=ExtResource("3_oty85")]
+position = Vector2(548, 315)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("6_7vjqr")]
 enemy_list = Array[PackedScene]([ExtResource("3_yu0bt"), ExtResource("3_0nxxg"), ExtResource("3_yu0bt")])

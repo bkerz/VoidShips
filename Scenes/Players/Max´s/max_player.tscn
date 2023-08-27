@@ -106,6 +106,10 @@ tracks/0/keys = {
 "values": [12, 13, 14, 15]
 }
 
+[sub_resource type="Animation" id="Animation_2iqoq"]
+resource_name = "Dash"
+length = 0.20001
+
 [sub_resource type="Animation" id="Animation_np2vd"]
 resource_name = "Derecha"
 length = 0.4
@@ -155,10 +159,6 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_2iqoq"]
-resource_name = "Dash"
-length = 0.20001
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jidiy"]
 _data = {
 "Abajo": SubResource("Animation_bq41j"),
@@ -171,6 +171,21 @@ _data = {
 "Derecha": SubResource("Animation_np2vd"),
 "Izquierda": SubResource("Animation_h18di"),
 "RESET": SubResource("Animation_r6np0")
+}
+
+[sub_resource type="Animation" id="Animation_gmy81"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_5886c"]
@@ -187,21 +202,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.501961, 0.501961, 0.501961, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_gmy81"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_li1v0"]
@@ -239,7 +239,6 @@ libraries = {
 
 [node name="areaDeAtaque" type="Area2D" parent="."]
 visible = false
-scale = Vector2(1, 1)
 script = ExtResource("3_lhv1y")
 
 [node name="colisionDeAtaque" type="CollisionShape2D" parent="areaDeAtaque"]

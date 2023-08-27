@@ -11,7 +11,7 @@ anchors_preset = 0
 offset_right = 1149.0
 offset_bottom = 646.0
 
-[node name="Button" type="Button" parent="EscenaGUI"]
+[node name="MaxSeleccion" type="Button" parent="EscenaGUI"]
 layout_mode = 0
 offset_left = 410.0
 offset_top = 217.0
@@ -19,7 +19,7 @@ offset_right = 729.0
 offset_bottom = 271.0
 text = "Max (Melee)"
 
-[node name="Button2" type="Button" parent="EscenaGUI"]
+[node name="iniciarElMundo" type="Button" parent="EscenaGUI"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -33,7 +33,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Ir al Mundo"
 
-[node name="Button3" type="Button" parent="EscenaGUI"]
+[node name="Volver al menu inicial" type="Button" parent="EscenaGUI"]
 layout_mode = 0
 offset_left = 1082.0
 offset_top = 12.0
@@ -50,4 +50,6 @@ offset_bottom = 61.0
 theme_override_font_sizes/font_size = 29
 text = "Seleccione un personaje"
 
-[connection signal="button_down" from="EscenaGUI/Button2" to="." method="_on_button_2_button_down"]
+[connection signal="button_down" from="EscenaGUI/MaxSeleccion" to="." method="_on_max_seleccion_button_down"]
+[connection signal="button_down" from="EscenaGUI/iniciarElMundo" to="." method="_on_button_2_button_down"]
+[connection signal="button_down" from="EscenaGUI/Volver al menu inicial" to="." method="_on_volver_al_menu_inicial_button_down"]
