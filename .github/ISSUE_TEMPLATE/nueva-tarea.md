@@ -13,10 +13,11 @@ _Descripción_
 
 ------------------------------------------------------------------------------------------------------------------------------
 **Cualquier aclaración sobre la tarea**
-'''
+
+```
 °Aclaracion 1
 °Aclaracion 2
-'''
+```
 
 
 **Subtareas** (opcional)
