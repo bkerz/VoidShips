@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3yj618iujlw3"]
+
+[ext_resource type="Texture2D" uid="uid://bjn7lv4g8vc8g" path="res://Scenes/Players/Max´s/maxSpritesWalk.png" id="1_rv1rm"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_rv1rm")
+hframes = 32
+frame = 24

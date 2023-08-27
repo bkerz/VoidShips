@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d1hi1ajleb7a4" path="res://Scenes/Ennemys/Snake/EnemySnake.tscn" id="3_0nxxg"]
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/MenuGUIScript.gd" id="3_ct034"]
 [ext_resource type="PackedScene" uid="uid://cturklof8iwho" path="res://Scenes/Ennemys/Slime/slime_enemy.tscn" id="3_yu0bt"]
-[ext_resource type="PackedScene" uid="uid://cfj2cpyebf7ag" path="res://enemy_spawner.tscn" id="6_7vjqr"]
+[ext_resource type="PackedScene" uid="uid://cfj2cpyebf7ag" path="res://Scenes/EnemySpawner/enemy_spawner.tscn" id="6_7vjqr"]
 
 [sub_resource type="Theme" id="Theme_8umrj"]
 
@@ -30,13 +30,6 @@ color = Color(0.00392157, 0.0352941, 0.117647, 1)
 
 [node name="MaxPlayer" parent="." instance=ExtResource("1_6npro")]
 position = Vector2(563, 333)
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_0nxxg")]
-position = Vector2(874, 306)
-scale = Vector2(2, 2)
-
-[node name="SlimeEnemy" parent="." instance=ExtResource("3_yu0bt")]
-position = Vector2(366, 333)
 
 [node name="MenuGUI" type="Control" parent="."]
 visible = false
@@ -89,7 +82,7 @@ text = "Salir"
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("6_7vjqr")]
-enemy_list = Array[PackedScene]([ExtResource("3_yu0bt"), ExtResource("3_0nxxg")])
+enemy_list = Array[PackedScene]([ExtResource("3_yu0bt"), ExtResource("3_0nxxg"), ExtResource("3_yu0bt")])
 
 [connection signal="button_down" from="MenuGUI/Seguir" to="MenuGUI" method="_on_seguir_button_down"]
 [connection signal="button_down" from="MenuGUI/Salir" to="MenuGUI" method="_on_salir_button_down"]
