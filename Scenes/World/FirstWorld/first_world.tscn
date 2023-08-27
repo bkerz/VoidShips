@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://7k8edk04vjj"]
+[gd_scene load_steps=8 format=3 uid="uid://7k8edk04vjj"]
 
 [ext_resource type="PackedScene" uid="uid://byfqd3ldkyqvh" path="res://Scenes/Players/Max´s/max_player.tscn" id="1_6npro"]
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/first_worldScript.gd" id="1_qp6ut"]
-[ext_resource type="PackedScene" path="res://Scenes/Ennemys/Snake/EnemySnake.tscn" id="3_0nxxg"]
+[ext_resource type="PackedScene" uid="uid://d1hi1ajleb7a4" path="res://Scenes/Ennemys/Snake/EnemySnake.tscn" id="3_0nxxg"]
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/MenuGUIScript.gd" id="3_ct034"]
 [ext_resource type="PackedScene" uid="uid://cturklof8iwho" path="res://Scenes/Ennemys/Slime/slime_enemy.tscn" id="3_yu0bt"]
+[ext_resource type="PackedScene" uid="uid://cfj2cpyebf7ag" path="res://enemy_spawner.tscn" id="6_7vjqr"]
 
 [sub_resource type="Theme" id="Theme_8umrj"]
 
@@ -86,6 +87,9 @@ grow_vertical = 0
 text = "Salir"
 
 [node name="Node2D" type="Node2D" parent="."]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("6_7vjqr")]
+enemy_list = Array[PackedScene]([ExtResource("3_yu0bt"), ExtResource("3_0nxxg")])
 
 [connection signal="button_down" from="MenuGUI/Seguir" to="MenuGUI" method="_on_seguir_button_down"]
 [connection signal="button_down" from="MenuGUI/Salir" to="MenuGUI" method="_on_salir_button_down"]
