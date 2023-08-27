@@ -20,5 +20,3 @@ func voltearSprite():
 	if GLOBALMANAGER.posicionGlobalPersonaje.x > position.x:
 		$Sprite2D.flip_h= true
 
-func setPosition():
-	print("MensajeRes")
