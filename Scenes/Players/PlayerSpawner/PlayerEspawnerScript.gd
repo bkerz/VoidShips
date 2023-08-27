@@ -3,6 +3,8 @@ extends Node2D
 #Pre cargo el path de la escena de un personaje
 const playerPath= preload("res://Scenes/Players/Max´s/max_player.tscn")
 
+var pos= Vector2(0,0)
+
 func _ready():
 	instanciarPersonaje()
 
