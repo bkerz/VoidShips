@@ -51,25 +51,8 @@ func animarLadoCaminarPlayerX():
 		$AnimationPlayer.play("Derecha")
 	elif Input.is_action_just_released("D"):
 		$AnimationPlayer.play("RESET")
-		
-#	if Input.is_action_pressed("WD"):
-#		$AnimationPlayer.play("ArribaDerecha")
-#	elif Input.is_action_just_released("WD"):
-#		$AnimationPlayer.play("RESET")
-#	elif Input.is_action_pressed("SA"):
-#		$AnimationPlayer.play("AbajoIzquierda")
-#	elif Input.is_action_just_released("SA"):
-#		$AnimationPlayer.play("RESET")
-#	elif Input.is_action_pressed("SD"):
-#		$AnimationPlayer.play("AbajoDerecha")
-#	elif Input.is_action_just_released("SD"):
-#		$AnimationPlayer.play("RESET")
-#	elif Input.is_action_pressed("AW"):
-#		$AnimationPlayer.play("ArribaIzquierda")
-#	elif Input.is_action_just_released("AW"):
-#		$AnimationPlayer.play("RESET")
 
-
+#daashee
 func _on_animation_player_2_animation_finished(anim_name):
 	
 	if anim_name == "dash":
