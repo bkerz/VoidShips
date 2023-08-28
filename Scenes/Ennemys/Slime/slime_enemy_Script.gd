@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 #Variables
 var playerPosition= Vector2(0,0)
+var vida= 20
+var ataqueMaximo= 5
+var ataqueMinimo= 10
 var velocidad= 150
 
 

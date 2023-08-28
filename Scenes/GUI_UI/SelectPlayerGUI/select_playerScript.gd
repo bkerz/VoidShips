@@ -17,4 +17,4 @@ func _on_button_2_button_down():
 
 #Vuelve al main menu
 func _on_volver_al_menu_inicial_button_down():
-	get_tree().change_scene_to_file("res://Scenes/GUI.UX/MainGUI/mainMenu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/GUI_UI/MainUI/mainMenu.tscn")

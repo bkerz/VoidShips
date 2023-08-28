@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://dlkxvimdlvha"]
 
-[ext_resource type="Script" path="res://Scenes/GUI.UX/SelectPlayerGUI/select_playerScript.gd" id="1_jghhr"]
+[ext_resource type="Script" path="res://Scenes/GUI_UI/SelectPlayerGUI/select_playerScript.gd" id="1_tb0t5"]
 
 [node name="SelectPlayer" type="Node2D"]
-script = ExtResource("1_jghhr")
+script = ExtResource("1_tb0t5")
 
 [node name="EscenaGUI" type="Control" parent="."]
 layout_mode = 3

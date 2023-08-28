@@ -28,14 +28,20 @@ grow_vertical = 2
 theme = SubResource("Theme_8umrj")
 color = Color(0.00392157, 0.0352941, 0.117647, 1)
 
+[node name="PlayerEspawner" parent="." instance=ExtResource("3_oty85")]
+position = Vector2(548, 315)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("6_7vjqr")]
+enemy_list = Array[PackedScene]([ExtResource("3_yu0bt"), ExtResource("3_0nxxg"), ExtResource("3_yu0bt")])
+
 [node name="MenuGUI" type="Control" parent="."]
 visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_left = 359.0
-offset_top = 57.0
-offset_right = 745.0
-offset_bottom = 582.0
+offset_left = 448.0
+offset_top = 103.0
+offset_right = 724.0
+offset_bottom = 521.0
 script = ExtResource("3_ct034")
 
 [node name="ColorRect" type="ColorRect" parent="MenuGUI"]
@@ -45,7 +51,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.235294, 0.235294, 0.235294, 1)
+color = Color(0.235294, 0.235294, 0.235294, 0.545098)
 
 [node name="Seguir" type="Button" parent="MenuGUI"]
 layout_mode = 1
@@ -75,12 +81,6 @@ offset_right = 21.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Salir"
-
-[node name="PlayerEspawner" parent="." instance=ExtResource("3_oty85")]
-position = Vector2(548, 315)
-
-[node name="EnemySpawner" parent="." instance=ExtResource("6_7vjqr")]
-enemy_list = Array[PackedScene]([ExtResource("3_yu0bt"), ExtResource("3_0nxxg"), ExtResource("3_yu0bt")])
 
 [connection signal="button_down" from="MenuGUI/Seguir" to="MenuGUI" method="_on_seguir_button_down"]
 [connection signal="button_down" from="MenuGUI/Salir" to="MenuGUI" method="_on_salir_button_down"]

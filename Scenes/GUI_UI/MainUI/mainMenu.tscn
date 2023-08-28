@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://de3pyloraube4"]
+[gd_scene load_steps=2 format=3 uid="uid://cms6jytji06mc"]
 
-[ext_resource type="Script" path="res://Scenes/GUI.UX/MainGUI/mainMenuScript.gd" id="1_egawk"]
+[ext_resource type="Script" path="res://Scenes/GUI_UI/MainUI/mainMenuScript.gd" id="1_sp7e6"]
 
 [node name="MenuPrincipal" type="Node2D"]
-script = ExtResource("1_egawk")
+script = ExtResource("1_sp7e6")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
