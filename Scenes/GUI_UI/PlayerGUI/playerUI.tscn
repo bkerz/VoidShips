@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cad8oxbpfuctf"]
+[gd_scene load_steps=16 format=3 uid="uid://cad8oxbpfuctf"]
 
 [ext_resource type="Script" path="res://Scenes/GUI_UI/PlayerGUI/playerUIScript.gd" id="1_arrvw"]
 [ext_resource type="Texture2D" uid="uid://bxkc0uoa216p6" path="res://Scenes/GUI_UI/PlayerGUI/mainAttackResource.png" id="1_hgshh"]
 [ext_resource type="Texture2D" uid="uid://w33vgmfjwu0w" path="res://Scenes/GUI_UI/PlayerGUI/secondAttackResource.png" id="2_frhi6"]
+[ext_resource type="Script" path="res://Scenes/GUI_UI/PlayerGUI/AtaquePrincipalScritp.gd" id="3_p25gx"]
 [ext_resource type="Texture2D" uid="uid://dd81ogoya48ha" path="res://Scenes/GUI_UI/PlayerGUI/specialAttackButton.png" id="3_v0nl1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bwav"]
@@ -25,6 +26,43 @@ bg_color = Color(0.168627, 0.490196, 0.584314, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34er5"]
 bg_color = Color(0, 0, 0, 0.329412)
+
+[sub_resource type="Animation" id="Animation_1gosq"]
+resource_name = "press"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HudGUI/AtaquePrincipal:flip_v")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_pecqy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HudGUI/AtaquePrincipal:flip_v")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s051g"]
+_data = {
+"RESET": SubResource("Animation_pecqy"),
+"press": SubResource("Animation_1gosq")
+}
 
 [node name="playerUI" type="Node2D"]
 script = ExtResource("1_arrvw")
@@ -159,7 +197,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_34er5")
 
-[node name="AtaquePrincipal" type="TextureButton" parent="HudGUI"]
+[node name="AtaquePrincipal" type="TextureButton" parent="HudGUI" groups=["hudButtonsDetectNormalAttack"]]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -171,6 +209,13 @@ offset_bottom = 486.0
 grow_vertical = 2
 scale = Vector2(0.1, 0.1)
 texture_normal = ExtResource("1_hgshh")
+script = ExtResource("3_p25gx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HudGUI/AtaquePrincipal"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_s051g")
+}
 
 [node name="AtaqueSecundario" type="TextureButton" parent="HudGUI"]
 layout_mode = 1
