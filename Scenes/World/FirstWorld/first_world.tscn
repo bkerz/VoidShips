@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://7k8edk04vjj"]
+[gd_scene load_steps=13 format=3 uid="uid://7k8edk04vjj"]
 
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/first_worldScript.gd" id="1_qp6ut"]
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/MenuGUIScript.gd" id="3_ct034"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cturklof8iwho" path="res://Scenes/Enemies/MineEnemy/enemyShipMine.tscn" id="4_18rdi"]
 [ext_resource type="PackedScene" uid="uid://d1hi1ajleb7a4" path="res://Scenes/Enemies/Snake/EnemySnake.tscn" id="5_aeile"]
 [ext_resource type="PackedScene" uid="uid://cfj2cpyebf7ag" path="res://Scenes/EnemySpawner/enemy_spawner.tscn" id="6_7vjqr"]
+[ext_resource type="PackedScene" uid="uid://35elmfbphbhu" path="res://Scenes/GUI_UI/EndGameTimer/end_game_timer.tscn" id="7_gilvl"]
 
 [sub_resource type="Theme" id="Theme_8umrj"]
 
@@ -163,5 +164,10 @@ collision_mask = 0
 position = Vector2(20, 1.5)
 shape = SubResource("RectangleShape2D_ea67h")
 
+[node name="Timer" parent="." instance=ExtResource("7_gilvl")]
+position = Vector2(1087, 16)
+minutes_time = 5
+
 [connection signal="button_down" from="MenuGUI/Seguir" to="MenuGUI" method="_on_seguir_button_down"]
 [connection signal="button_down" from="MenuGUI/Salir" to="MenuGUI" method="_on_salir_button_down"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
