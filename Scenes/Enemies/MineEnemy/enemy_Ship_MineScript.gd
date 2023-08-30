@@ -6,9 +6,10 @@ var playerPosition= Vector2(0,0)
 var vida= 20
 var ataqueMaximo= 5
 var ataqueMinimo= 10
+var ataqueFinal
 var velocidadFinal
-var velocidadMaxima= 250
-var velocidadMinima= 200
+var velocidadMaxima= 200
+var velocidadMinima= 150
 var velocidadRotacion= 6.0
 var basicUtilitiesInstance= basicUtilities.new()
 
@@ -31,6 +32,9 @@ func voltearSprite():
 		$Sprite2D.flip_h= true
 		
 
+func randomizarRangoAtaque():
+	ataqueFinal= basicUtilitiesInstance.randomizeRangeNumber(ataqueMinimo,ataqueMaximo)
+
 func definirDatosRandomizados():
 	velocidadFinal= basicUtilitiesInstance.randomizeRangeNumber(velocidadMinima,velocidadMaxima)
 	#randomizeRangeNumber.randomize()
@@ -42,3 +46,8 @@ func epicDeath():
 func targetPlayerGraphic(delta):
 	var anguloA= $".".transform.x.angle_to(playerPosition)
 	$".".rotate(sign(anguloA) * min(delta * velocidadRotacion, abs(anguloA)))
+
+
+func _on_atk_area_area_entered(area):
+	randomizarRangoAtaque()
+	area.takeDamage(ataqueFinal,$".".global_position)

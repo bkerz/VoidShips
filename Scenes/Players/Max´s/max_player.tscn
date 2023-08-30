@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://byfqd3ldkyqvh"]
+[gd_scene load_steps=22 format=3 uid="uid://byfqd3ldkyqvh"]
 
 [ext_resource type="Script" path="res://Scenes/Players/Max´s/MaxPlayerScript.gd" id="1_s5sgb"]
+[ext_resource type="Texture2D" uid="uid://dug8bkceag6m8" path="res://Scenes/Players/Max´s/suicideShip.png" id="2_qq2bx"]
 [ext_resource type="Script" path="res://Scenes/Players/Max´s/areaDeAtaqueScript.gd" id="3_lhv1y"]
-[ext_resource type="Texture2D" uid="uid://bjn7lv4g8vc8g" path="res://Scenes/Players/Max´s/maxSpritesWalk.png" id="3_pki1l"]
+[ext_resource type="Script" path="res://Scenes/Players/Max´s/takeDamagePlayerScript.gd" id="4_0bie2"]
 
 [sub_resource type="Animation" id="Animation_bq41j"]
 resource_name = "Abajo"
@@ -216,6 +217,9 @@ size = Vector2(35, 70)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ty0mc"]
 size = Vector2(50, 70)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52lsm"]
+size = Vector2(98, 42)
+
 [node name="MaxPlayer" type="CharacterBody2D" groups=["playerGroup"]]
 scale = Vector2(0.5, 0.5)
 collision_mask = 8
@@ -224,9 +228,9 @@ script = ExtResource("1_s5sgb")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1.01328e-06, 0.499999)
-scale = Vector2(5, 6.125)
-texture = ExtResource("3_pki1l")
-hframes = 32
+rotation = -1.5708
+scale = Vector2(1.5, 1.838)
+texture = ExtResource("2_qq2bx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 speed_scale = 0.6
@@ -240,6 +244,8 @@ libraries = {
 }
 
 [node name="areaDeAtaqueRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("3_lhv1y")
 
 [node name="colisionDeAtaque" type="CollisionShape2D" parent="areaDeAtaqueRange"]
@@ -252,4 +258,24 @@ position = Vector2(2.68221e-06, 5)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_ty0mc")
 
+[node name="takeDamagePlayer" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("4_0bie2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="takeDamagePlayer"]
+position = Vector2(-3, 1)
+shape = SubResource("RectangleShape2D_52lsm")
+debug_color = Color(1, 0.00784314, 0.0392157, 0.419608)
+
+[node name="invincivilityTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="knockBackDuration" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
 [connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_animation_player_2_animation_finished"]
+[connection signal="timeout" from="invincivilityTimer" to="." method="_on_invincivility_timer_timeout"]
+[connection signal="timeout" from="knockBackDuration" to="." method="_on_knock_back_duration_timeout"]

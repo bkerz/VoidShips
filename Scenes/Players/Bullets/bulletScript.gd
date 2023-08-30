@@ -5,7 +5,7 @@ var speed= 500
 var damageBase= 10
 
 func _ready():
-	pass
+	aimPos= get_local_mouse_position()
 
 
 func _process(delta):

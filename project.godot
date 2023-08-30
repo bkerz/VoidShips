@@ -86,7 +86,8 @@ ui_Mouse_Left={
 
 2d_physics/layer_1="player"
 2d_physics/layer_2="enemyCollider"
-2d_physics/layer_3="EnemyHit"
+2d_physics/layer_3="EnemyReciveHit"
 2d_physics/layer_4="walls"
+2d_physics/layer_5="playerReciveHit"
 2d_physics/layer_9="bulletWall"
 2d_physics/layer_12="BulletsHit"
