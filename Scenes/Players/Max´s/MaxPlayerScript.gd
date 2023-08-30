@@ -7,7 +7,7 @@ const bulletPath= preload("res://Scenes/Players/Bullets/bullet.tscn")
 var knockBack_vector= 0
 var knockBack_force= .070
 
-var vida= 100
+var vida
 var ataqueMaximo=30
 var ataqueMinimo=10
 var speed = 400
@@ -18,6 +18,7 @@ var posibleKnockBack= true
 
 
 func _ready():
+	vida = GLOBALMANAGER.playerMaxLife
 	asignarHud()
 
 #Detecta si se esta moviendo usando W/A/S/D como referencia
@@ -50,6 +51,7 @@ func asignarHud():
 	var hudPath= preload("res://Scenes/GUI_UI/PlayerGUI/playerUI.tscn")
 	var hudInstance= hudPath.instantiate()
 	get_parent().add_child(hudInstance)
+	get_tree().call_group("gui_Info","actualizeHpBar",float(vida))
 
 
 #Instancia y "dispara" una escena de bullet dandosela como hijo a su padre
