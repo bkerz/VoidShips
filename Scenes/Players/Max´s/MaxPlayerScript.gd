@@ -18,6 +18,7 @@ func _ready():
 func _input(event):
 	var input_direction = Input.get_vector("A","D","W","S")
 	if event is InputEventMouseButton and event.is_action_pressed("ui_Mouse_Left"):
+		get_tree().call_group("hudButtonsDetectNormalAttack","reflex")
 		shootBullet()
 	#Le paso la posicion del player
 	GLOBALMANAGER.posicionGlobalPersonaje = global_position
