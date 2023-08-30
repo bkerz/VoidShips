@@ -4,6 +4,9 @@ extends Node2D
 #variables
 var escapeMenuVisible= false
 
+func _ready():
+	pass
+
 func _process(delta):
 	vigilarMenuEscape()
 
