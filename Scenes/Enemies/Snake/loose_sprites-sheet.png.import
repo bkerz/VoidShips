@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bguwppf42w2dg"
-path="res://.godot/imported/OjoVolador.png-8bd7254b74e2f49f62cdff1fa59f8034.ctex"
+uid="uid://bertxajn3j1gs"
+path="res://.godot/imported/loose_sprites-sheet.png-b8844628c4c8a86b218c1c1b5d18c9d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Ennemys/Eye/OjoVolador.png"
-dest_files=["res://.godot/imported/OjoVolador.png-8bd7254b74e2f49f62cdff1fa59f8034.ctex"]
+source_file="res://Scenes/Enemies/Snake/loose_sprites-sheet.png"
+dest_files=["res://.godot/imported/loose_sprites-sheet.png-b8844628c4c8a86b218c1c1b5d18c9d1.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dn7q7id3q2b70"]
 
-[ext_resource type="Texture2D" uid="uid://bguwppf42w2dg" path="res://Scenes/Ennemys/Eye/OjoVolador.png" id="1_nsxj2"]
+[ext_resource type="Texture2D" uid="uid://bguwppf42w2dg" path="res://Scenes/Enemies/Eye/OjoVolador.png" id="1_nsxj2"]
 
 [sub_resource type="Animation" id="Animation_4npps"]
 length = 0.001

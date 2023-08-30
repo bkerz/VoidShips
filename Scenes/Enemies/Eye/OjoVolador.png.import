@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxymphbx58ar5"
-path="res://.godot/imported/SerpienteMaldita1-sheet.png-b6001cd7fd8a68a4ae409d6404a8e559.ctex"
+uid="uid://bguwppf42w2dg"
+path="res://.godot/imported/OjoVolador.png-b929e06737dea4b3149a2009767107e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Ennemys/Snake/SerpienteMaldita1-sheet.png"
-dest_files=["res://.godot/imported/SerpienteMaldita1-sheet.png-b6001cd7fd8a68a4ae409d6404a8e559.ctex"]
+source_file="res://Scenes/Enemies/Eye/OjoVolador.png"
+dest_files=["res://.godot/imported/OjoVolador.png-b929e06737dea4b3149a2009767107e6.ctex"]
 
 [params]
 
