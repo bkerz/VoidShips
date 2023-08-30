@@ -19,4 +19,4 @@ func vigilarMenuEscape():
 
 
 func _on_timer_timeout():
-	get_tree().change_scene_to_file("res://Scenes/GUI_UI/MainUI/mainMenu.tscn")w
+	get_tree().change_scene_to_file("res://Scenes/GUI_UI/MainUI/mainMenu.tscn")
