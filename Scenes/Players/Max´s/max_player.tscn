@@ -218,7 +218,7 @@ size = Vector2(35, 70)
 size = Vector2(50, 70)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52lsm"]
-size = Vector2(98, 42)
+size = Vector2(68, 42)
 
 [node name="MaxPlayer" type="CharacterBody2D" groups=["playerGroup"]]
 scale = Vector2(0.5, 0.5)
@@ -228,8 +228,8 @@ script = ExtResource("1_s5sgb")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1.01328e-06, 0.499999)
-rotation = -1.5708
-scale = Vector2(1.5, 1.838)
+rotation = 1.5708
+scale = Vector2(2, 2.472)
 texture = ExtResource("2_qq2bx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -264,7 +264,7 @@ collision_mask = 0
 script = ExtResource("4_0bie2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="takeDamagePlayer"]
-position = Vector2(-3, 1)
+position = Vector2(-2, 1)
 shape = SubResource("RectangleShape2D_52lsm")
 debug_color = Color(1, 0.00784314, 0.0392157, 0.419608)
 
