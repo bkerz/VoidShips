@@ -27,6 +27,21 @@ bg_color = Color(0.168627, 0.490196, 0.584314, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34er5"]
 bg_color = Color(0, 0, 0, 0.329412)
 
+[sub_resource type="Animation" id="Animation_pecqy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HudGUI/AtaquePrincipal:flip_v")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_1gosq"]
 resource_name = "press"
 length = 0.5
@@ -41,21 +56,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_pecqy"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HudGUI/AtaquePrincipal:flip_v")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s051g"]
