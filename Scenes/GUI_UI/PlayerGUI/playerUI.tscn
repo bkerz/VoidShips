@@ -67,6 +67,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rdvkx")
 
 [node name="MP_Label" type="Label" parent="HudUI"]
+layout_mode = 0
 offset_left = 17.0
 offset_top = 63.0
 offset_right = 229.0

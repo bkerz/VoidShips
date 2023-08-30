@@ -1,13 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://7k8edk04vjj"]
+[gd_scene load_steps=12 format=3 uid="uid://7k8edk04vjj"]
 
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/first_worldScript.gd" id="1_qp6ut"]
 [ext_resource type="PackedScene" uid="uid://d1hi1ajleb7a4" path="res://Scenes/Ennemys/Snake/EnemySnake.tscn" id="3_0nxxg"]
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/MenuGUIScript.gd" id="3_ct034"]
 [ext_resource type="PackedScene" uid="uid://br1h424kd45pe" path="res://Scenes/Players/PlayerSpawner/player_espawner.tscn" id="3_oty85"]
-[ext_resource type="PackedScene" uid="uid://cturklof8iwho" path="res://Scenes/Ennemys/Slime/slime_enemy.tscn" id="3_yu0bt"]
+[ext_resource type="PackedScene" uid="uid://cturklof8iwho" path="res://Scenes/Ennemys/MineEnemy/enemyShipMine.tscn" id="4_p5abd"]
 [ext_resource type="PackedScene" uid="uid://cfj2cpyebf7ag" path="res://Scenes/EnemySpawner/enemy_spawner.tscn" id="6_7vjqr"]
 
 [sub_resource type="Theme" id="Theme_8umrj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2vko"]
+size = Vector2(11, 649)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snrvf"]
+size = Vector2(10, 645)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvb6s"]
+size = Vector2(1152, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ea67h"]
+size = Vector2(1152, 9)
 
 [node name="FirstWorld" type="Node2D"]
 script = ExtResource("1_qp6ut")
@@ -32,7 +44,7 @@ color = Color(0.00392157, 0.0352941, 0.117647, 1)
 position = Vector2(548, 315)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("6_7vjqr")]
-enemy_list = Array[PackedScene]([ExtResource("3_yu0bt"), ExtResource("3_0nxxg"), ExtResource("3_yu0bt")])
+enemy_list = Array[PackedScene]([ExtResource("4_p5abd"), ExtResource("3_0nxxg"), ExtResource("4_p5abd")])
 
 [node name="MenuGUI" type="Control" parent="."]
 visible = false
@@ -81,6 +93,75 @@ offset_right = 21.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Salir"
+
+[node name="Walls" type="Node2D" parent="."]
+position = Vector2(554, 313)
+
+[node name="wall1" type="StaticBody2D" parent="Walls"]
+position = Vector2(-561, 2)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/wall1"]
+position = Vector2(5.5, 8.5)
+shape = SubResource("RectangleShape2D_n2vko")
+
+[node name="stopBullets" type="Area2D" parent="Walls/wall1"]
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/wall1/stopBullets"]
+position = Vector2(1, 7.5)
+shape = SubResource("RectangleShape2D_snrvf")
+
+[node name="wall2" type="StaticBody2D" parent="Walls"]
+position = Vector2(3, -320)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/wall2"]
+position = Vector2(21, 5.5)
+shape = SubResource("RectangleShape2D_nvb6s")
+
+[node name="Area2D" type="Area2D" parent="Walls/wall2"]
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/wall2/Area2D"]
+position = Vector2(20, 1.5)
+shape = SubResource("RectangleShape2D_ea67h")
+
+[node name="wall3" type="StaticBody2D" parent="Walls"]
+position = Vector2(597, 2)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/wall3"]
+position = Vector2(5.5, 8.5)
+shape = SubResource("RectangleShape2D_n2vko")
+
+[node name="stopBullets" type="Area2D" parent="Walls/wall3"]
+position = Vector2(5, -2)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/wall3/stopBullets"]
+position = Vector2(1, 7.5)
+shape = SubResource("RectangleShape2D_snrvf")
+
+[node name="wall4" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, 328)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/wall4"]
+position = Vector2(21, 5.5)
+shape = SubResource("RectangleShape2D_nvb6s")
+
+[node name="Area2D" type="Area2D" parent="Walls/wall4"]
+position = Vector2(0, 12)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/wall4/Area2D"]
+position = Vector2(20, 1.5)
+shape = SubResource("RectangleShape2D_ea67h")
 
 [connection signal="button_down" from="MenuGUI/Seguir" to="MenuGUI" method="_on_seguir_button_down"]
 [connection signal="button_down" from="MenuGUI/Salir" to="MenuGUI" method="_on_salir_button_down"]

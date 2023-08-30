@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cturklof8iwho"]
+
+[ext_resource type="Script" path="res://Scenes/Ennemys/MineEnemy/enemy_Ship_MineScript.gd" id="1_jq7an"]
+[ext_resource type="Texture2D" uid="uid://dbuwowwibu2jk" path="res://Scenes/Ennemys/MineEnemy/enemyShip.png" id="2_pwwkn"]
+[ext_resource type="Script" path="res://Scenes/Ennemys/MineEnemy/hitAreaScript.gd" id="3_m050u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l6wtq"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kluer"]
+radius = 7.64853
+
+[node name="SlimeEnemy" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_jq7an")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["enemyTargetGroup"]]
+texture_filter = 1
+rotation = -1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_pwwkn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_l6wtq")
+
+[node name="hitArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_m050u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitArea"]
+shape = SubResource("CircleShape2D_kluer")
+debug_color = Color(0.815686, 0.403922, 0, 0.419608)

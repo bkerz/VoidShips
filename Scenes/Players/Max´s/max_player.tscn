@@ -216,8 +216,9 @@ size = Vector2(35, 70)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ty0mc"]
 size = Vector2(50, 70)
 
-[node name="MaxPlayer" type="CharacterBody2D"]
+[node name="MaxPlayer" type="CharacterBody2D" groups=["playerGroup"]]
 scale = Vector2(0.5, 0.5)
+collision_mask = 8
 script = ExtResource("1_s5sgb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -238,17 +239,15 @@ libraries = {
 "": SubResource("AnimationLibrary_li1v0")
 }
 
-[node name="areaDeAtaque" type="Area2D" parent="."]
-visible = false
+[node name="areaDeAtaqueRange" type="Area2D" parent="."]
 script = ExtResource("3_lhv1y")
 
-[node name="colisionDeAtaque" type="CollisionShape2D" parent="areaDeAtaque"]
+[node name="colisionDeAtaque" type="CollisionShape2D" parent="areaDeAtaqueRange"]
 position = Vector2(62.5, -2.98023e-06)
 shape = SubResource("RectangleShape2D_wpmcn")
 debug_color = Color(0.631373, 0, 0.0627451, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(2.68221e-06, 5)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_ty0mc")

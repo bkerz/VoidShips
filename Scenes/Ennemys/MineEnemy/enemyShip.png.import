@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyphbggkpki51"
-path="res://.godot/imported/EnemigoSlime.png-50c529f9099c6770483dfc85337a3941.ctex"
+uid="uid://dbuwowwibu2jk"
+path="res://.godot/imported/enemyShip.png-a7aa99a8b11957199b9da35deff88299.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Ennemys/Slime/EnemigoSlime.png"
-dest_files=["res://.godot/imported/EnemigoSlime.png-50c529f9099c6770483dfc85337a3941.ctex"]
+source_file="res://Scenes/Ennemys/MineEnemy/enemyShip.png"
+dest_files=["res://.godot/imported/enemyShip.png-a7aa99a8b11957199b9da35deff88299.ctex"]
 
 [params]
 
