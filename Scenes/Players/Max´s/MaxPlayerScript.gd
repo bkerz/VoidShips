@@ -70,7 +70,7 @@ func knockBackTake(enemyPosition):
 	activateKnockBack= true
 	#activo su invulnerabilidad y la duracion del knockBack
 	$invincivilityTimer.start()
-	$AnimationPlayer2.play("invisibilityAnimation")
+	$animatorPlayer.play("invisibilityAnimation")
 	$knockBackDuration.start()
 	invincivility()
 func invincivility():
