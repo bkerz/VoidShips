@@ -164,9 +164,10 @@ collision_mask = 0
 position = Vector2(20, 1.5)
 shape = SubResource("RectangleShape2D_ea67h")
 
-[node name="Node2D" parent="." instance=ExtResource("7_3pbfn")]
+[node name="Timer" parent="." instance=ExtResource("7_3pbfn")]
 position = Vector2(1085, 13)
 minutes_time = 5
 
 [connection signal="button_down" from="MenuGUI/Seguir" to="MenuGUI" method="_on_seguir_button_down"]
 [connection signal="button_down" from="MenuGUI/Salir" to="MenuGUI" method="_on_salir_button_down"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
