@@ -14,6 +14,8 @@ var ataqueMinimo=10
 var speed = 400
 
 #Variables Booleans
+var holdLeftClick= false
+var coolDownLeftClick= false
 var activateKnockBack= false
 var posibleKnockBack= true
 
@@ -25,9 +27,15 @@ func _ready():
 #Detecta si se esta moviendo usando W/A/S/D como referencia
 func _input(event):
 	var input_direction = Input.get_vector("A","D","W","S")
+	
+	#Detecta si se clickeo el boton izquierdo del mouse
 	if event is InputEventMouseButton and event.is_action_pressed("ui_Mouse_Left"):
-		get_tree().call_group("hudButtonsDetectNormalAttack","reflex")
-		shootBullet()
+		#si es asi, activa la vandera de que se esta manteniendo
+		holdLeftClick= true
+	if event is InputEventMouseButton and event.is_action_released("ui_Mouse_Left"):
+		#si se desclickea el boton izquierdo, baja esa bandera para indicar que 
+		#dejo de mantenerse
+		holdLeftClick= false
 	#Le paso la posicion del player
 	GLOBALMANAGER.posicionGlobalPersonaje = global_position
 	velocity = input_direction * speed
@@ -36,6 +44,14 @@ func _process(delta):
 	rotarNavePuntero()
 	$areaDeAtaqueRange.look_at(get_global_mouse_position())
 	_input(input_event)
+	#detecta si se mantiene el click izquierdo y si el cooldown de disparo se 
+	#terminó
+	if holdLeftClick == true and coolDownLeftClick == false:
+		shootBullet()
+		#se activa del cooldown indicando que se esta enfriando para el siguiente
+		#disparo
+		coolDownLeftClick= true
+		$coolDownLeftClick.start()
 	if activateKnockBack== true and posibleKnockBack== true:
 		aplicate_KnockBack()
 	else:
@@ -62,6 +78,9 @@ func shootBullet():
 	bulletInstance.minDamage= ataqueMinimo
 	bulletInstance.position= $".".position
 	get_parent().add_child(bulletInstance)
+func _on_cool_down_left_click_timeout():
+	#Termina el cooldown de el disparo
+	coolDownLeftClick= false
 
 #Le doy al personaje un KCOKBACK del enemigo
 func knockBackTake(enemyPosition):
@@ -102,3 +121,6 @@ func deadPlayer():
 	get_tree().call_group("deathMenuUi","aparecer")
 	queue_free()
 	
+
+
+

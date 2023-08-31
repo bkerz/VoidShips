@@ -97,5 +97,10 @@ wait_time = 0.5
 wait_time = 0.3
 one_shot = true
 
+[node name="coolDownLeftClick" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
 [connection signal="timeout" from="invincivilityTimer" to="." method="_on_invincivility_timer_timeout"]
 [connection signal="timeout" from="knockBackDuration" to="." method="_on_knock_back_duration_timeout"]
+[connection signal="timeout" from="coolDownLeftClick" to="." method="_on_cool_down_left_click_timeout"]
