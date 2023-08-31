@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+#preloads
+
 
 #Variables
 var playerPosition= Vector2(0,0)
@@ -42,6 +44,7 @@ func definirDatosRandomizados():
 
 func epicDeath():
 	queue_free()
+
 
 func targetPlayerGraphic(delta):
 	var anguloA= $".".transform.x.angle_to(playerPosition)
