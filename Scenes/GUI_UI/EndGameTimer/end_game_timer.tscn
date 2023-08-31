@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/GUI_UI/EndGameTimer/end_game_timer.gd" id="1_baics"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Timer" type="Node2D"]
 script = ExtResource("1_baics")
 
 [node name="Timer" type="Timer" parent="."]
