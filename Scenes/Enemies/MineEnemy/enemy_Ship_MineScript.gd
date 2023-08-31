@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 #preloads
-
+var showDamagePath= preload("res://Scenes/GUI_UI/UtilitiesUI/show_damage_taken.tscn")
 
 #Variables
 var playerPosition= Vector2(0,0)
@@ -46,6 +46,11 @@ func definirDatosRandomizados():
 func epicDeath():
 	queue_free()
 
+func showDamage(damage,critic):
+	var showDamageInstance= showDamagePath.instantiate()
+	showDamageInstance.showDamage(damage,critic)
+	showDamageInstance.pos = $Marker2D.global_position
+	get_parent().add_child(showDamageInstance)
 
 func targetPlayerGraphic(delta):
 	var anguloA= $".".transform.x.angle_to(playerPosition)

@@ -19,6 +19,9 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_sqh8o")
 
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-12.3333, 0)
+
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["enemyTargetGroup"]]
 texture_filter = 1
 rotation = -1.5708
@@ -44,8 +47,5 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="atkArea"]
 shape = SubResource("CircleShape2D_k0b3v")
 debug_color = Color(0.65098, 0.00392157, 0, 0.419608)
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(-12.3333, 0)
 
 [connection signal="area_entered" from="atkArea" to="." method="_on_atk_area_area_entered"]

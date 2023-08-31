@@ -1,9 +1,12 @@
 extends CharacterBody2D
+var basicUtilitiesInstance= basicUtilities.new()
 
 var aimPos= Vector2(0,0)
 var speed= 500
 
-var damageBase= 10
+var minDamage= 10
+var maxDamage= 15
+var finalDamage
 
 func _ready():
 	aimPos= get_local_mouse_position()
@@ -17,7 +20,14 @@ func dissapearBullet():
 	queue_free()
 
 func _on_area_2d_area_entered(area):
-	area.takeDamageBullet(damageBase)
+	var max= false
+	var critic= false
+	finalDamage= basicUtilitiesInstance.randomizeRangeNumber(minDamage,maxDamage)
+	if finalDamage >= maxDamage:
+		max= true
+	else:
+		pass
+	area.takeDamageBullet(finalDamage,max)
 	dissapearBullet()
 
 

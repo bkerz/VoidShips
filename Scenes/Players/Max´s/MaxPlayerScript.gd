@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 #Constantes
 const bulletPath= preload("res://Scenes/Players/Bullets/bullet.tscn")
 

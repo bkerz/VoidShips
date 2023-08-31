@@ -16,25 +16,30 @@ extends CharacterBody2D
 #	print("memori")
 #	queue_free()
 #
-
+var pos
 var direction= Vector2(0,-1)
 var speed= 25
 var dissapearBool= false
 var idleTimer= true
 
 func _ready():
+	position = pos
 	scale= Vector2(0,0)
 	$appears.start()
 
 func _process(delta):
 	if dissapearBool == false:
-		scale= scale + Vector2(0.05,0.05)
+		scale= scale + Vector2(0.08,0.08)
 	if dissapearBool == true and idleTimer == false:
 		scale= scale - Vector2(0.1,0.1)
 	velocity = direction * speed
 	move_and_slide()
 
 func showDamage(amountDamage,maxDamage):
+	if maxDamage== true:
+		$turnTo.play("red")
+	else:
+		pass
 	$Label.text = str(amountDamage)
 	
 func desaparecer():
