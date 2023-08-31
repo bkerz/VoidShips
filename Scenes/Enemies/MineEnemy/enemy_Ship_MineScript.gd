@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 #Variables
 var playerPosition= Vector2(0,0)
+var nivel
 var vida= 20
 var ataqueMaximo= 5
 var ataqueMinimo= 10
@@ -53,4 +54,4 @@ func targetPlayerGraphic(delta):
 
 func _on_atk_area_area_entered(area):
 	randomizarRangoAtaque()
-	area.takeDamage(ataqueFinal,$".".global_position)
+	area.takeDamage(ataqueFinal,$".".position)
