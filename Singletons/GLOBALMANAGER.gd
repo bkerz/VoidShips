@@ -1,6 +1,6 @@
 extends Node
 
-const playerMaxLife= 120
+const playerMaxLife= 40
 const playerMaxVelocidad= 300
 const playerMaxAtaque= 20
 

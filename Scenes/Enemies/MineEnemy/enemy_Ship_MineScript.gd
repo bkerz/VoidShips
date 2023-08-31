@@ -60,3 +60,7 @@ func targetPlayerGraphic(delta):
 func _on_atk_area_area_entered(area):
 	randomizarRangoAtaque()
 	area.takeDamage(ataqueFinal,$".".position)
+
+
+func _on_slow_movement_timeout():
+	velocidadFinal = velocidadFinal + 75
