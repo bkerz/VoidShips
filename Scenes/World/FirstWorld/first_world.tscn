@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://7k8edk04vjj"]
+[gd_scene load_steps=15 format=3 uid="uid://7k8edk04vjj"]
 
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/first_worldScript.gd" id="1_qp6ut"]
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/MenuGUIScript.gd" id="3_ct034"]
@@ -7,8 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://d1hi1ajleb7a4" path="res://Scenes/Enemies/Snake/EnemySnake.tscn" id="5_aeile"]
 [ext_resource type="PackedScene" uid="uid://cfj2cpyebf7ag" path="res://Scenes/EnemySpawner/enemy_spawner.tscn" id="6_7vjqr"]
 [ext_resource type="PackedScene" uid="uid://35elmfbphbhu" path="res://Scenes/GUI_UI/EndGameTimer/end_game_timer.tscn" id="7_3pbfn"]
+[ext_resource type="Script" path="res://Scenes/World/FirstWorld/onDeathMenuScript.gd" id="7_g7cmy"]
 
 [sub_resource type="Theme" id="Theme_8umrj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shyln"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 0.647059)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2vko"]
 size = Vector2(11, 649)
@@ -95,6 +99,64 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Salir"
 
+[node name="onDeathMenu" type="Control" parent="." groups=["deathMenuUi"]]
+visible = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_g7cmy")
+
+[node name="Panel" type="Panel" parent="onDeathMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.5
+offset_top = -114.5
+offset_right = 182.5
+offset_bottom = 88.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_shyln")
+
+[node name="escapeButton" type="Button" parent="onDeathMenu/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Volver al menu"
+
+[node name="Label" type="Label" parent="onDeathMenu/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Has muerto!"
+
 [node name="Walls" type="Node2D" parent="."]
 position = Vector2(554, 313)
 
@@ -164,9 +226,11 @@ collision_mask = 0
 position = Vector2(20, 1.5)
 shape = SubResource("RectangleShape2D_ea67h")
 
-[node name="Node2D" parent="." instance=ExtResource("7_3pbfn")]
+[node name="Timer" parent="." instance=ExtResource("7_3pbfn")]
 position = Vector2(1085, 13)
 minutes_time = 5
 
 [connection signal="button_down" from="MenuGUI/Seguir" to="MenuGUI" method="_on_seguir_button_down"]
 [connection signal="button_down" from="MenuGUI/Salir" to="MenuGUI" method="_on_salir_button_down"]
+[connection signal="pressed" from="onDeathMenu/Panel/escapeButton" to="MenuGUI" method="_on_escape_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
