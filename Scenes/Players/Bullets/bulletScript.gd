@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var aimPos= Vector2(0,0)
 var speed= 500
+
 var damageBase= 10
 
 func _ready():
