@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bguwppf42w2dg"
-path="res://.godot/imported/OjoVolador.png-b929e06737dea4b3149a2009767107e6.ctex"
+uid="uid://lie6h42lem5f"
+path="res://.godot/imported/mega_cannon.png-932c5d5169f8fc2830653f09f8d8751a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Enemies/Eye/OjoVolador.png"
-dest_files=["res://.godot/imported/OjoVolador.png-b929e06737dea4b3149a2009767107e6.ctex"]
+source_file="res://Scenes/Enemies/CannonEnemy/mega_cannon.png"
+dest_files=["res://.godot/imported/mega_cannon.png-932c5d5169f8fc2830653f09f8d8751a.ctex"]
 
 [params]
 

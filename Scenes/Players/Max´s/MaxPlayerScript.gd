@@ -123,4 +123,13 @@ func deadPlayer():
 	
 
 
+func _on_stop_enemy_movement_area_entered(area):
+	area.detenerMovimiento()
+func _on_stop_enemy_movement_area_exited(area):
+	area.reanudarMovimiento()
 
+
+func _on_war_of_enemy_area_entered(area):
+	area.dentroDistanciaCritica()
+func _on_war_of_enemy_area_exited(area):
+	area.fueraDistanciaCritica()

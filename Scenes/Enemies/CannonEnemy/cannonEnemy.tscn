@@ -1,0 +1,104 @@
+[gd_scene load_steps=11 format=3 uid="uid://dn7q7id3q2b70"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/CannonEnemy/cannonEnemyScript.gd" id="1_k8eiu"]
+[ext_resource type="Texture2D" uid="uid://lie6h42lem5f" path="res://Scenes/Enemies/CannonEnemy/mega_cannon.png" id="2_tuyig"]
+[ext_resource type="Script" path="res://Scenes/Enemies/CannonEnemy/hitAreaScript.gd" id="3_62d8i"]
+[ext_resource type="Script" path="res://Scenes/Enemies/CannonEnemy/detectLimitAreaPlayerScript.gd" id="4_3n5lk"]
+
+[sub_resource type="Animation" id="Animation_owflp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_35l3l"]
+resource_name = "takeDamage"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.721569, 0, 0.0705882, 1), Color(1, 1, 1, 1), Color(0.737255, 0, 0.054902, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ytj6p"]
+_data = {
+"RESET": SubResource("Animation_owflp"),
+"takeDamage": SubResource("Animation_35l3l")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eg5ev"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uar03"]
+radius = 7.64853
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t6ni8"]
+radius = 11.4115
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["cannonEnemyGroup"]]
+scale = Vector2(2.5, 2.5)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_k8eiu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = -1.5708
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_tuyig")
+
+[node name="animationEnemy" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ytj6p")
+}
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-14.3333, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_eg5ev")
+
+[node name="hitArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_62d8i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitArea"]
+shape = SubResource("CircleShape2D_uar03")
+debug_color = Color(0.815686, 0.403922, 0, 0.419608)
+
+[node name="slowMovement" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="detectLimitAreaPlayer" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("4_3n5lk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectLimitAreaPlayer"]
+shape = SubResource("CircleShape2D_t6ni8")
+debug_color = Color(0.329412, 0.490196, 1, 0.419608)
+
+[node name="tomarDistancia" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="slowMovement" to="." method="_on_slow_movement_timeout"]
+[connection signal="timeout" from="tomarDistancia" to="." method="_on_tomar_distancia_timeout"]

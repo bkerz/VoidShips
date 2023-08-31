@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://byfqd3ldkyqvh"]
+[gd_scene load_steps=13 format=3 uid="uid://byfqd3ldkyqvh"]
 
 [ext_resource type="Script" path="res://Scenes/Players/Max´s/MaxPlayerScript.gd" id="1_s5sgb"]
 [ext_resource type="Texture2D" uid="uid://dug8bkceag6m8" path="res://Scenes/Players/Max´s/suicideShip.png" id="2_nilk4"]
@@ -51,6 +51,12 @@ size = Vector2(50, 70)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldnl0"]
 size = Vector2(66, 42)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1jwx6"]
+radius = 178.07
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eklv1"]
+radius = 163.233
+
 [node name="MaxPlayer" type="CharacterBody2D" groups=["playerGroup"]]
 collision_mask = 8
 script = ExtResource("1_s5sgb")
@@ -90,6 +96,13 @@ position = Vector2(-3, 1)
 shape = SubResource("RectangleShape2D_ldnl0")
 debug_color = Color(0.968627, 0.184314, 0, 0.419608)
 
+[node name="stopEnemyMovement" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stopEnemyMovement"]
+shape = SubResource("CircleShape2D_1jwx6")
+
 [node name="invincivilityTimer" type="Timer" parent="."]
 wait_time = 0.5
 
@@ -101,6 +114,17 @@ one_shot = true
 wait_time = 0.3
 one_shot = true
 
+[node name="warOfEnemy" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="warOfEnemy"]
+shape = SubResource("CircleShape2D_eklv1")
+
+[connection signal="area_entered" from="stopEnemyMovement" to="." method="_on_stop_enemy_movement_area_entered"]
+[connection signal="area_exited" from="stopEnemyMovement" to="." method="_on_stop_enemy_movement_area_exited"]
 [connection signal="timeout" from="invincivilityTimer" to="." method="_on_invincivility_timer_timeout"]
 [connection signal="timeout" from="knockBackDuration" to="." method="_on_knock_back_duration_timeout"]
 [connection signal="timeout" from="coolDownLeftClick" to="." method="_on_cool_down_left_click_timeout"]
+[connection signal="area_entered" from="warOfEnemy" to="." method="_on_war_of_enemy_area_entered"]
+[connection signal="area_exited" from="warOfEnemy" to="." method="_on_war_of_enemy_area_exited"]
