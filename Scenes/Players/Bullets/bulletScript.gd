@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 var aimPos= Vector2(0,0)
 var speed= 500
-var damageBase= 12
+
+var damageBase= 10
 
 func _ready():
 	aimPos= get_local_mouse_position()
