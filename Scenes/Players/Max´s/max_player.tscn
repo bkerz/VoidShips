@@ -1,199 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://byfqd3ldkyqvh"]
+[gd_scene load_steps=11 format=3 uid="uid://byfqd3ldkyqvh"]
 
 [ext_resource type="Script" path="res://Scenes/Players/Max´s/MaxPlayerScript.gd" id="1_s5sgb"]
-[ext_resource type="Texture2D" uid="uid://dug8bkceag6m8" path="res://Scenes/Players/Max´s/suicideShip.png" id="2_qq2bx"]
+[ext_resource type="Texture2D" uid="uid://dug8bkceag6m8" path="res://Scenes/Players/Max´s/suicideShip.png" id="2_nilk4"]
 [ext_resource type="Script" path="res://Scenes/Players/Max´s/areaDeAtaqueScript.gd" id="3_lhv1y"]
-[ext_resource type="Script" path="res://Scenes/Players/Max´s/takeDamagePlayerScript.gd" id="4_0bie2"]
+[ext_resource type="Script" path="res://Scenes/Players/Max´s/takeDamagePlayerScript.gd" id="4_ql1hm"]
 
-[sub_resource type="Animation" id="Animation_bq41j"]
-resource_name = "Abajo"
-length = 0.33
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_3p2yp"]
-resource_name = "AbajoDerecha"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [28, 29, 30, 31]
-}
-
-[sub_resource type="Animation" id="Animation_0cmif"]
-resource_name = "AbajoIzquierda"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [4, 5, 6, 7]
-}
-
-[sub_resource type="Animation" id="Animation_quvrh"]
-resource_name = "Arriba"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [16, 17, 18, 19]
-}
-
-[sub_resource type="Animation" id="Animation_1n2hn"]
-resource_name = "ArribaDerecha"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [20, 21, 22, 23]
-}
-
-[sub_resource type="Animation" id="Animation_ylflw"]
-resource_name = "ArribaIzquierda"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [12, 13, 14, 15]
-}
-
-[sub_resource type="Animation" id="Animation_2iqoq"]
-resource_name = "Dash"
-length = 0.20001
-
-[sub_resource type="Animation" id="Animation_np2vd"]
-resource_name = "Derecha"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [24, 25, 26, 27]
-}
-
-[sub_resource type="Animation" id="Animation_h18di"]
-resource_name = "Izquierda"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [8, 9, 10, 11]
-}
-
-[sub_resource type="Animation" id="Animation_r6np0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jidiy"]
-_data = {
-"Abajo": SubResource("Animation_bq41j"),
-"AbajoDerecha": SubResource("Animation_3p2yp"),
-"AbajoIzquierda": SubResource("Animation_0cmif"),
-"Arriba": SubResource("Animation_quvrh"),
-"ArribaDerecha": SubResource("Animation_1n2hn"),
-"ArribaIzquierda": SubResource("Animation_ylflw"),
-"Dash": SubResource("Animation_2iqoq"),
-"Derecha": SubResource("Animation_np2vd"),
-"Izquierda": SubResource("Animation_h18di"),
-"RESET": SubResource("Animation_r6np0")
-}
-
-[sub_resource type="Animation" id="Animation_gmy81"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_5886c"]
-resource_name = "dash"
-length = 0.40001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.501961, 0.501961, 0.501961, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_8xar6"]
+[sub_resource type="Animation" id="Animation_egebt"]
 resource_name = "invisibilityAnimation"
 length = 0.5
 tracks/0/type = "value"
@@ -209,11 +21,25 @@ tracks/0/keys = {
 "values": [false, true, false, true, false, true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_li1v0"]
+[sub_resource type="Animation" id="Animation_3sjpx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1eil3"]
 _data = {
-"RESET": SubResource("Animation_gmy81"),
-"dash": SubResource("Animation_5886c"),
-"invisibilityAnimation": SubResource("Animation_8xar6")
+"RESET": SubResource("Animation_3sjpx"),
+"invisibilityAnimation": SubResource("Animation_egebt")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpmcn"]
@@ -222,8 +48,8 @@ size = Vector2(35, 70)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ty0mc"]
 size = Vector2(50, 70)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_52lsm"]
-size = Vector2(68, 42)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldnl0"]
+size = Vector2(66, 42)
 
 [node name="MaxPlayer" type="CharacterBody2D" groups=["playerGroup"]]
 scale = Vector2(0.5, 0.5)
@@ -234,23 +60,15 @@ script = ExtResource("1_s5sgb")
 texture_filter = 1
 position = Vector2(1.01328e-06, 0.499999)
 rotation = 1.5708
-scale = Vector2(2, 2.472)
-texture = ExtResource("2_qq2bx")
+scale = Vector2(1.5, 1.837)
+texture = ExtResource("2_nilk4")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-speed_scale = 0.6
+[node name="animatorPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_jidiy")
-}
-
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_li1v0")
+"": SubResource("AnimationLibrary_1eil3")
 }
 
 [node name="areaDeAtaqueRange" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 0
 script = ExtResource("3_lhv1y")
 
 [node name="colisionDeAtaque" type="CollisionShape2D" parent="areaDeAtaqueRange"]
@@ -266,16 +84,15 @@ shape = SubResource("RectangleShape2D_ty0mc")
 [node name="takeDamagePlayer" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 0
-script = ExtResource("4_0bie2")
+script = ExtResource("4_ql1hm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="takeDamagePlayer"]
-position = Vector2(-2, 1)
-shape = SubResource("RectangleShape2D_52lsm")
-debug_color = Color(1, 0.00784314, 0.0392157, 0.419608)
+position = Vector2(-3, 1)
+shape = SubResource("RectangleShape2D_ldnl0")
+debug_color = Color(0.968627, 0.184314, 0, 0.419608)
 
 [node name="invincivilityTimer" type="Timer" parent="."]
 wait_time = 0.5
-one_shot = true
 
 [node name="knockBackDuration" type="Timer" parent="."]
 wait_time = 0.3
