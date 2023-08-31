@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/GUI_UI/PlayerGUI/playerUIScript.gd" id="1_arrvw"]
 [ext_resource type="Texture2D" uid="uid://bxkc0uoa216p6" path="res://Scenes/GUI_UI/PlayerGUI/mainAttackResource.png" id="1_hgshh"]
-[ext_resource type="Texture2D" uid="uid://w33vgmfjwu0w" path="res://Scenes/GUI_UI/PlayerGUI/secondAttackResource.png" id="2_frhi6"]
 [ext_resource type="Script" path="res://Scenes/GUI_UI/PlayerGUI/AtaquePrincipalScritp.gd" id="3_p25gx"]
-[ext_resource type="Texture2D" uid="uid://dd81ogoya48ha" path="res://Scenes/GUI_UI/PlayerGUI/specialAttackButton.png" id="3_v0nl1"]
 
 [sub_resource type="FontVariation" id="FontVariation_oxq5c"]
 
@@ -200,44 +198,50 @@ bg_color = Color(0, 0.137255, 0.301961, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ivb1"]
 bg_color = Color(0.223529, 0.203922, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idake"]
-bg_color = Color(0, 0.294118, 0.454902, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfkhu"]
+bg_color = Color(0, 0.32549, 0.607843, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xjq2"]
-bg_color = Color(0.168627, 0.490196, 0.584314, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ccx2a"]
+bg_color = Color(0.2, 0.521569, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_34er5"]
 bg_color = Color(0, 0, 0, 0.329412)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odgnn"]
+bg_color = Color(0.45098, 0.45098, 0.45098, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6msb1"]
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_pecqy"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HudGUI/AtaquePrincipal:flip_v")
+tracks/0/enabled = false
+tracks/0/path = NodePath("HudGUI/Panel/ProgressBar:value")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_1gosq"]
 resource_name = "press"
-length = 0.5
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HudGUI/AtaquePrincipal:flip_v")
+tracks/0/path = NodePath("HudGUI/Panel/ProgressBar:value")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"update": 0,
+"values": [0.0, 100.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s051g"]
@@ -336,12 +340,13 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -19.0
+offset_left = -21.0
 offset_top = 24.0
-offset_right = 21.0
-offset_bottom = 47.0
+offset_right = 24.0
+offset_bottom = 76.0
 grow_horizontal = 2
-text = "LVL: 1"
+text = "LVL: 0"
+vertical_alignment = 1
 
 [node name="BackGroundPanel" type="Panel" parent="HudUI/LVL_Label"]
 show_behind_parent = true
@@ -350,30 +355,27 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -12.0
-offset_bottom = 10.0
+offset_left = -1.0
+offset_top = -11.0
+offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BackGroundXP" type="Panel" parent="HudUI/LVL_Label"]
-layout_mode = 0
-offset_left = -272.5
-offset_top = -6.0
-offset_right = 315.5
-offset_bottom = -2.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_idake")
-
-[node name="TopPanelXP" type="Panel" parent="HudUI/LVL_Label/BackGroundXP"]
+[node name="levelBar" type="ProgressBar" parent="HudUI/LVL_Label"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -211.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -295.0
+offset_right = 295.0
+offset_bottom = 6.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3xjq2")
+theme_override_styles/background = SubResource("StyleBoxFlat_sfkhu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ccx2a")
+show_percentage = false
 
 [node name="HudGUI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 432.0
@@ -390,54 +392,34 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_34er5")
 
-[node name="AtaquePrincipal" type="TextureButton" parent="HudGUI" groups=["hudButtonsDetectNormalAttack"]]
+[node name="Panel" type="Panel" parent="HudGUI"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 9.0
-offset_top = -26.0
-offset_right = 521.0
-offset_bottom = 486.0
+offset_top = -24.0
+offset_right = 51.0
+offset_bottom = 24.0
 grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="HudGUI/Panel"]
+layout_mode = 0
+offset_right = 51.0
+offset_bottom = 49.0
+theme_override_styles/background = SubResource("StyleBoxFlat_odgnn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6msb1")
+show_percentage = false
+
+[node name="AtaquePrincipal" type="Sprite2D" parent="HudGUI/Panel" groups=["hudButtonsDetectNormalAttack"]]
+position = Vector2(26, 24.5)
 scale = Vector2(0.1, 0.1)
-texture_normal = ExtResource("1_hgshh")
+texture = ExtResource("1_hgshh")
 script = ExtResource("3_p25gx")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HudGUI/AtaquePrincipal"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HudGUI/Panel"]
 root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_s051g")
 }
 
-[node name="AtaqueSecundario" type="TextureButton" parent="HudGUI"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -26.0
-offset_top = -25.0
-offset_right = 486.0
-offset_bottom = 487.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.1, 0.1)
-texture_normal = ExtResource("2_frhi6")
-
-[node name="AtaqueEspecial" type="TextureButton" parent="HudGUI"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -25.0
-offset_right = 550.0
-offset_bottom = 725.0
-grow_horizontal = 0
-grow_vertical = 2
-scale = Vector2(0.07, 0.07)
-texture_normal = ExtResource("3_v0nl1")
+[connection signal="animation_finished" from="HudGUI/Panel/AnimationPlayer" to="HudGUI/Panel/AtaquePrincipal" method="_on_animation_player_animation_finished"]
