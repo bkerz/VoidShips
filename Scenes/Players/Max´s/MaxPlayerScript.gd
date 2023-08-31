@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 #Constantes
 const bulletPath= preload("res://Scenes/Players/Bullets/bullet.tscn")
 
@@ -57,7 +58,8 @@ func asignarHud():
 #Instancia y "dispara" una escena de bullet dandosela como hijo a su padre
 func shootBullet():
 	var bulletInstance= bulletPath.instantiate()
-	#bulletInstance.aimPos = get_local_mouse_position()
+	bulletInstance.maxDamage= ataqueMaximo
+	bulletInstance.minDamage= ataqueMinimo
 	bulletInstance.position= $".".position
 	get_parent().add_child(bulletInstance)
 

@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
 #preloads
-
+var showDamagePath= preload("res://Scenes/GUI_UI/UtilitiesUI/show_damage_taken.tscn")
 
 #Variables
 var playerPosition= Vector2(0,0)
+var nivel
 var vida= 20
 var ataqueMaximo= 5
 var ataqueMinimo= 10
@@ -45,6 +46,11 @@ func definirDatosRandomizados():
 func epicDeath():
 	queue_free()
 
+func showDamage(damage,critic):
+	var showDamageInstance= showDamagePath.instantiate()
+	showDamageInstance.showDamage(damage,critic)
+	showDamageInstance.pos = $Marker2D.global_position
+	get_parent().add_child(showDamageInstance)
 
 func targetPlayerGraphic(delta):
 	var anguloA= $".".transform.x.angle_to(playerPosition)
@@ -53,4 +59,4 @@ func targetPlayerGraphic(delta):
 
 func _on_atk_area_area_entered(area):
 	randomizarRangoAtaque()
-	area.takeDamage(ataqueFinal,$".".global_position)
+	area.takeDamage(ataqueFinal,$".".position)

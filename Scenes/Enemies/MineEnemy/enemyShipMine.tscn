@@ -19,6 +19,9 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_sqh8o")
 
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-12.3333, 0)
+
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["enemyTargetGroup"]]
 texture_filter = 1
 rotation = -1.5708
