@@ -28,22 +28,19 @@ func _ready():
 
 func _process(delta):
 	#var angle= (playerPosition - self.global_position).angle()
-
+	playerPosition= GLOBALMANAGER.posicionGlobalPersonaje - position
+	targetPlayerGraphic(delta)
 	if distanciaMinima == false and distanciaCritica == false and distanciaAsegurada == true and tomandoDistancia == false:
 		moverseAlPlayer(delta)
 	if distanciaMinima == true and distanciaCritica == true and distanciaAsegurada == false:
 		alejarseAlPlayer(delta)
-
+	
 
 func moverseAlPlayer(delta):
-	playerPosition= GLOBALMANAGER.posicionGlobalPersonaje - position
-	targetPlayerGraphic(delta)
 	velocity = playerPosition.normalized() * velocidadFinal
 	move_and_slide()
 
 func alejarseAlPlayer(delta):
-	playerPosition= GLOBALMANAGER.posicionGlobalPersonaje - position
-	targetPlayerGraphic(delta)
 	playerPosition= position - GLOBALMANAGER.posicionGlobalPersonaje
 	velocity = playerPosition.normalized() * velocidadFinal
 	move_and_slide()
@@ -66,6 +63,7 @@ func dentroDistanciaCritica():
 	distanciaAsegurada= false
 	distanciaCritica= true
 func detenerMovimiento():
+	$shootCoolDown.start()
 	distanciaMinima= true
 	
 #SALE de la zona

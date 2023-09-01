@@ -18,6 +18,7 @@ func _ready():
 		$Area2D.set_collision_mask_value(3,true)
 	else:
 		$Area2D.set_collision_mask_value(3,false)
+		speed= 100
 		$Area2D.set_collision_mask_value(damageTo,true)
 
 func _process(delta):

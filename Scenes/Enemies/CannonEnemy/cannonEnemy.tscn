@@ -104,7 +104,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="shootCoolDown" type="Timer" parent="."]
-autostart = true
+wait_time = 1.5
 
 [connection signal="timeout" from="slowMovement" to="." method="_on_slow_movement_timeout"]
 [connection signal="timeout" from="tomarDistancia" to="." method="_on_tomar_distancia_timeout"]

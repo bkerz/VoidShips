@@ -44,7 +44,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_8umrj")
-color = Color(0.00392157, 0.0352941, 0.117647, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="PlayerEspawner" parent="." instance=ExtResource("3_oty85")]
 position = Vector2(548, 315)
