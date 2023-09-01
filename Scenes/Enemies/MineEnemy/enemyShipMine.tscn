@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cturklof8iwho"]
+[gd_scene load_steps=11 format=3 uid="uid://cturklof8iwho"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/MineEnemy/enemy_Ship_MineScript.gd" id="1_sqh8o"]
 [ext_resource type="Texture2D" uid="uid://dbuwowwibu2jk" path="res://Scenes/Enemies/MineEnemy/enemyShip.png" id="2_66icg"]
@@ -27,6 +27,46 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_8xw5x"]
+resource_name = "deathAnimation"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.5708, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.396078, 0.396078, 0.396078, 1), Color(0.396078, 0.396078, 0.396078, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_35l3l"]
 resource_name = "takeDamage"
@@ -47,10 +87,11 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ytj6p"]
 _data = {
 "RESET": SubResource("Animation_owflp"),
+"deathAnimation": SubResource("Animation_8xw5x"),
 "takeDamage": SubResource("Animation_35l3l")
 }
 
-[node name="SlimeEnemy" type="CharacterBody2D"]
+[node name="SlimeEnemy" type="CharacterBody2D" groups=["onPlayerDeath"]]
 scale = Vector2(3, 3)
 collision_layer = 2
 collision_mask = 0
@@ -85,14 +126,19 @@ collision_mask = 16
 shape = SubResource("CircleShape2D_k0b3v")
 debug_color = Color(0.65098, 0.00392157, 0, 0.419608)
 
-[node name="slowMovement" type="Timer" parent="."]
-wait_time = 0.4
-one_shot = true
-
 [node name="animationEnemy" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ytj6p")
 }
 
+[node name="slowMovement" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="deathTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="area_entered" from="atkArea" to="." method="_on_atk_area_area_entered"]
 [connection signal="timeout" from="slowMovement" to="." method="_on_slow_movement_timeout"]
+[connection signal="timeout" from="deathTimer" to="." method="_on_death_timer_timeout"]

@@ -46,7 +46,7 @@ _data = {
 size = Vector2(35, 70)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ty0mc"]
-size = Vector2(50, 70)
+size = Vector2(60.0001, 32.8572)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldnl0"]
 size = Vector2(66, 42)
@@ -63,6 +63,7 @@ collision_mask = 8
 script = ExtResource("1_s5sgb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 0
 texture_filter = 1
 position = Vector2(1.01328e-06, 0.499999)
 rotation = 1.5708
@@ -75,6 +76,7 @@ libraries = {
 }
 
 [node name="areaDeAtaqueRange" type="Area2D" parent="."]
+visible = false
 script = ExtResource("3_lhv1y")
 
 [node name="colisionDeAtaque" type="CollisionShape2D" parent="areaDeAtaqueRange"]
@@ -83,11 +85,12 @@ shape = SubResource("RectangleShape2D_wpmcn")
 debug_color = Color(0.631373, 0, 0.0627451, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.68221e-06, 5)
+position = Vector2(-2.85714, 0.714286)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_ty0mc")
 
 [node name="takeDamagePlayer" type="Area2D" parent="."]
+visible = false
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("4_ql1hm")
@@ -98,6 +101,7 @@ shape = SubResource("RectangleShape2D_ldnl0")
 debug_color = Color(0.968627, 0.184314, 0, 0.419608)
 
 [node name="stopEnemyMovement" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 64
 
@@ -105,6 +109,7 @@ collision_mask = 64
 shape = SubResource("CircleShape2D_1jwx6")
 
 [node name="warOfEnemy" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 64
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://7k8edk04vjj"]
+[gd_scene load_steps=17 format=3 uid="uid://7k8edk04vjj"]
 
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/first_worldScript.gd" id="1_qp6ut"]
+[ext_resource type="Texture2D" uid="uid://d0itpbnd3nuol" path="res://Scenes/World/FirstWorld/earthPlanet.png" id="2_otecb"]
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/MenuGUIScript.gd" id="3_ct034"]
 [ext_resource type="PackedScene" uid="uid://br1h424kd45pe" path="res://Scenes/Players/PlayerSpawner/player_espawner.tscn" id="3_oty85"]
 [ext_resource type="PackedScene" uid="uid://cturklof8iwho" path="res://Scenes/Enemies/MineEnemy/enemyShipMine.tscn" id="4_18rdi"]
@@ -37,6 +38,8 @@ offset_right = 1152.0
 offset_bottom = 648.0
 
 [node name="ColorRect" type="ColorRect" parent="Fondo"]
+light_mask = 32
+visibility_layer = 32
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,6 +48,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_8umrj")
 color = Color(0, 0, 0, 1)
+
+[node name="planetEarth" type="Sprite2D" parent="."]
+modulate = Color(0.419608, 0.419608, 0.419608, 1)
+position = Vector2(1035, 268)
+scale = Vector2(0.578788, 0.54697)
+texture = ExtResource("2_otecb")
 
 [node name="PlayerEspawner" parent="." instance=ExtResource("3_oty85")]
 position = Vector2(548, 315)

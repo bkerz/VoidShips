@@ -120,6 +120,7 @@ func aplicate_KnockBack():
 #desaparece al personaje del arbol de escena
 func deadPlayer():
 	get_tree().call_group("deathMenuUi","aparecer")
+	get_tree().call_group("onPlayerDeath","playerIsDeath")
 	queue_free()
 	
 

@@ -8,6 +8,8 @@ var distanciaMinima= false
 var distanciaCritica= false
 var distanciaAsegurada= true
 var tomandoDistancia= false
+var playerDeath= false
+var death= false
 
 #Variables
 var playerPosition= Vector2(0,0)
@@ -30,11 +32,14 @@ func _process(delta):
 	#var angle= (playerPosition - self.global_position).angle()
 	playerPosition= GLOBALMANAGER.posicionGlobalPersonaje - position
 	targetPlayerGraphic(delta)
-	if distanciaMinima == false and distanciaCritica == false and distanciaAsegurada == true and tomandoDistancia == false:
-		moverseAlPlayer(delta)
-	if distanciaMinima == true and distanciaCritica == true and distanciaAsegurada == false:
+	if playerDeath== true:
 		alejarseAlPlayer(delta)
-	
+	else:
+		if distanciaMinima == false and distanciaCritica == false and distanciaAsegurada == true and tomandoDistancia == false:
+			moverseAlPlayer(delta)
+		if distanciaMinima == true and distanciaCritica == true and distanciaAsegurada == false:
+			alejarseAlPlayer(delta)
+
 
 func moverseAlPlayer(delta):
 	velocity = playerPosition.normalized() * velocidadFinal
@@ -79,6 +84,10 @@ func reanudarMovimiento():
 func _on_tomar_distancia_timeout():
 	distanciaAsegurada= true
 
+
+func playerIsDeath():
+	$shootCoolDown.stop()
+	playerDeath= true
 
 func epicDeath():
 	queue_free()
