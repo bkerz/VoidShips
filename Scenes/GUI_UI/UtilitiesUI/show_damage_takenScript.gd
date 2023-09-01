@@ -1,21 +1,6 @@
 extends CharacterBody2D
+const utilitiesPath= preload("res://Classes/basicUtilities.gd")
 
-#func showDamagen(amountDamage,maxDamage):
-#	$Label.text = $Label.text + str(amountDamage)
-#	$animators.play("appears")
-#	$dissapearTimer.start()
-#	print(amountDamage)
-#	if maxDamage == true:
-#		$animator.play("turnRed")
-#	else:
-#		pass
-#
-#
-#func _on_dissapear_timer_timeout():
-#	$animators.play("disappear")
-#	print("memori")
-#	queue_free()
-#
 var pos
 var direction= Vector2(0,-1)
 var speed= 25
@@ -23,8 +8,10 @@ var dissapearBool= false
 var idleTimer= true
 
 func _ready():
+	var utilitiesClass= utilitiesPath.new()
 	position = pos
 	scale= Vector2(0,0)
+	rotate(utilitiesClass.randomizeRangeNumberFloat(0.2,-0.2))
 	$appears.start()
 
 func _process(delta):
