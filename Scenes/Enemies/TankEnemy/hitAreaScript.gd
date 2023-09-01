@@ -1,5 +1,7 @@
 extends Area2D
 
+
+
 func takeDamageBullet(damage,critic):
 	var aux= $"..".vida
 	if aux <= damage:
@@ -8,6 +10,6 @@ func takeDamageBullet(damage,critic):
 	else:
 		$"..".vida = aux - damage
 		$"..".showDamage(damage,critic)
-		$"..".velocidadFinal = $"..".velocidadFinal - 1
+		$"..".velocidadFinal = $"..".velocidadFinal - 75
 		$"../animationEnemy".play("takeDamage")
 		$"../slowMovement".start()

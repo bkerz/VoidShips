@@ -68,6 +68,9 @@ libraries = {
 "": SubResource("AnimationLibrary_ytj6p")
 }
 
+[node name="Front" type="Marker2D" parent="."]
+position = Vector2(12, 0)
+
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(-14.3333, 0)
 
@@ -100,5 +103,9 @@ debug_color = Color(0.329412, 0.490196, 1, 0.419608)
 wait_time = 0.5
 one_shot = true
 
+[node name="shootCoolDown" type="Timer" parent="."]
+autostart = true
+
 [connection signal="timeout" from="slowMovement" to="." method="_on_slow_movement_timeout"]
 [connection signal="timeout" from="tomarDistancia" to="." method="_on_tomar_distancia_timeout"]
+[connection signal="timeout" from="shootCoolDown" to="." method="_on_shoot_cool_down_timeout"]

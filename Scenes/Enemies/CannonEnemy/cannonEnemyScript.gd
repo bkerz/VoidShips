@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var showDamagePath= preload("res://Scenes/GUI_UI/UtilitiesUI/show_damage_taken.tscn")
+var bulletPath= preload("res://Scenes/Players/Bullets/bullet.tscn")
 
 #Variables Bo0leans
 var distanciaMinima= false
@@ -99,7 +100,17 @@ func targetPlayerGraphic(delta):
 	$".".rotate(sign(anguloA) * min(delta * velocidadRotacion, abs(anguloA)))
 
 
-
+func shootBullet():
+	var bulletInstance= bulletPath.instantiate()
+	bulletInstance.maxDamage= ataqueMaximo
+	bulletInstance.minDamage= ataqueMinimo
+	bulletInstance.definirEnemigo(5)
+	var aux= GLOBALMANAGER.posicionGlobalPersonaje - position
+	bulletInstance.aimPos= aux
+	bulletInstance.position= $Front.global_position
+	get_parent().add_child(bulletInstance)
+func _on_shoot_cool_down_timeout():
+	shootBullet()
 
 func _on_atk_area_area_entered(area):
 	randomizarRangoAtaque()
@@ -109,3 +120,6 @@ func _on_atk_area_area_entered(area):
 
 func _on_slow_movement_timeout():
 	velocidadFinal = velocidadFinal + 75
+
+
+

@@ -76,6 +76,7 @@ func shootBullet():
 	var bulletInstance= bulletPath.instantiate()
 	bulletInstance.maxDamage= ataqueMaximo
 	bulletInstance.minDamage= ataqueMinimo
+	bulletInstance.definirEnemigo(3)
 	bulletInstance.position= $".".position
 	get_parent().add_child(bulletInstance)
 func _on_cool_down_left_click_timeout():
