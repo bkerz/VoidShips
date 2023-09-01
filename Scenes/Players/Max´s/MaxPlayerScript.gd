@@ -76,6 +76,7 @@ func shootBullet():
 	var bulletInstance= bulletPath.instantiate()
 	bulletInstance.maxDamage= ataqueMaximo
 	bulletInstance.minDamage= ataqueMinimo
+	bulletInstance.definirEnemigo(3)
 	bulletInstance.position= $".".position
 	get_parent().add_child(bulletInstance)
 func _on_cool_down_left_click_timeout():
@@ -123,4 +124,13 @@ func deadPlayer():
 	
 
 
+func _on_stop_enemy_movement_area_entered(area):
+	area.detenerMovimiento()
+func _on_stop_enemy_movement_area_exited(area):
+	area.reanudarMovimiento()
 
+
+func _on_war_of_enemy_area_entered(area):
+	area.dentroDistanciaCritica()
+func _on_war_of_enemy_area_exited(area):
+	area.fueraDistanciaCritica()

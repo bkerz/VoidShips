@@ -8,6 +8,6 @@ func takeDamageBullet(damage,critic):
 	else:
 		$"..".vida = aux - damage
 		$"..".showDamage(damage,critic)
-		$"..".velocidadFinal = $"..".velocidadFinal - 1
+		$"..".velocidadFinal = $"..".velocidadFinal - 45
 		$"../animationEnemy".play("takeDamage")
 		$"../slowMovement".start()

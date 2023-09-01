@@ -1,0 +1,125 @@
+extends CharacterBody2D
+
+var showDamagePath= preload("res://Scenes/GUI_UI/UtilitiesUI/show_damage_taken.tscn")
+var bulletPath= preload("res://Scenes/Players/Bullets/bullet.tscn")
+
+#Variables Bo0leans
+var distanciaMinima= false
+var distanciaCritica= false
+var distanciaAsegurada= true
+var tomandoDistancia= false
+
+#Variables
+var playerPosition= Vector2(0,0)
+var nivel
+var vida= 15
+var ataqueMaximo= 5
+var ataqueMinimo= 10
+var ataqueFinal
+var velocidadFinal
+var velocidadMaxima= 270
+var velocidadMinima= 200
+var velocidadRotacion= 6.0
+var basicUtilitiesInstance= basicUtilities.new()
+
+
+func _ready():
+	definirDatosRandomizados()
+
+func _process(delta):
+	#var angle= (playerPosition - self.global_position).angle()
+
+	if distanciaMinima == false and distanciaCritica == false and distanciaAsegurada == true and tomandoDistancia == false:
+		moverseAlPlayer(delta)
+	if distanciaMinima == true and distanciaCritica == true and distanciaAsegurada == false:
+		alejarseAlPlayer(delta)
+
+
+func moverseAlPlayer(delta):
+	playerPosition= GLOBALMANAGER.posicionGlobalPersonaje - position
+	targetPlayerGraphic(delta)
+	velocity = playerPosition.normalized() * velocidadFinal
+	move_and_slide()
+
+func alejarseAlPlayer(delta):
+	playerPosition= GLOBALMANAGER.posicionGlobalPersonaje - position
+	targetPlayerGraphic(delta)
+	playerPosition= position - GLOBALMANAGER.posicionGlobalPersonaje
+	velocity = playerPosition.normalized() * velocidadFinal
+	move_and_slide()
+
+func quedarseQuieto(delta):
+	pass
+
+
+func randomizarRangoAtaque():
+	ataqueFinal= basicUtilitiesInstance.randomizeRangeNumber(ataqueMinimo,ataqueMaximo)
+
+func definirDatosRandomizados():
+	velocidadFinal= basicUtilitiesInstance.randomizeRangeNumber(velocidadMinima,velocidadMaxima)
+	#randomizeRangeNumber.randomize()
+	#velocidadFinal= randomizeRangeNumber.randi_range(velocidadMinima,velocidadMaxima)
+
+
+#ENTRA en la zona
+func dentroDistanciaCritica():
+	distanciaAsegurada= false
+	distanciaCritica= true
+func detenerMovimiento():
+	distanciaMinima= true
+	
+#SALE de la zona
+func fueraDistanciaCritica():
+	distanciaAsegurada= true
+	distanciaCritica= false
+func reanudarMovimiento():
+	distanciaMinima= false
+
+
+
+#TOMANDO distancia
+func _on_tomar_distancia_timeout():
+	distanciaAsegurada= true
+
+
+func epicDeath():
+	queue_free()
+
+
+
+func showDamage(damage,critic):
+	var showDamageInstance= showDamagePath.instantiate()
+	showDamageInstance.showDamage(damage,critic)
+	showDamageInstance.pos = $Marker2D.global_position
+	get_parent().add_child(showDamageInstance)
+
+
+
+func targetPlayerGraphic(delta):
+	var anguloA= $".".transform.x.angle_to(playerPosition)
+	$".".rotate(sign(anguloA) * min(delta * velocidadRotacion, abs(anguloA)))
+
+
+func shootBullet():
+	var bulletInstance= bulletPath.instantiate()
+	bulletInstance.maxDamage= ataqueMaximo
+	bulletInstance.minDamage= ataqueMinimo
+	bulletInstance.definirEnemigo(5)
+	var aux= GLOBALMANAGER.posicionGlobalPersonaje - position
+	bulletInstance.aimPos= aux
+	bulletInstance.position= $Front.global_position
+	get_parent().add_child(bulletInstance)
+func _on_shoot_cool_down_timeout():
+	shootBullet()
+
+func _on_atk_area_area_entered(area):
+	randomizarRangoAtaque()
+	area.takeDamage(ataqueFinal,$".".position)
+
+
+
+func _on_slow_movement_timeout():
+	velocidadFinal = velocidadFinal + 75
+
+
+

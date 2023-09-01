@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bguwppf42w2dg"
-path="res://.godot/imported/OjoVolador.png-b929e06737dea4b3149a2009767107e6.ctex"
+uid="uid://cgdf27dqev55r"
+path="res://.godot/imported/enemyCanonShip.png-d23d9d9fd2a38976a9bb92562c9dcdc8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Enemies/Eye/OjoVolador.png"
-dest_files=["res://.godot/imported/OjoVolador.png-b929e06737dea4b3149a2009767107e6.ctex"]
+source_file="res://Scenes/Enemies/TankEnemy/enemyCanonShip.png"
+dest_files=["res://.godot/imported/enemyCanonShip.png-d23d9d9fd2a38976a9bb92562c9dcdc8.ctex"]
 
 [params]
 
