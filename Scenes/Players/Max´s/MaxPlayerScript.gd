@@ -4,16 +4,20 @@ extends CharacterBody2D
 #Constantes
 const bulletPath= preload("res://Scenes/Players/Bullets/bullet.tscn")
 
+
+
 #Variables
 var knockBack_vector= 0
 var knockBack_force= .070
 
+
 var vida
-var ataqueMaximo=30
-var ataqueMinimo=10
+var ataqueMaximo=500
+var ataqueMinimo=200
 var speed = 400
 
 #Variables Booleans
+var selfDeath= false
 var holdLeftClick= false
 var coolDownLeftClick= false
 var activateKnockBack= false
@@ -41,21 +45,24 @@ func _input(event):
 	velocity = input_direction * speed
 
 func _process(delta):
-	rotarNavePuntero()
-	$areaDeAtaqueRange.look_at(get_global_mouse_position())
-	_input(input_event)
-	#detecta si se mantiene el click izquierdo y si el cooldown de disparo se 
-	#terminó
-	if holdLeftClick == true and coolDownLeftClick == false:
-		shootBullet()
-		#se activa del cooldown indicando que se esta enfriando para el siguiente
-		#disparo
-		coolDownLeftClick= true
-		$coolDownLeftClick.start()
-	if activateKnockBack== true and posibleKnockBack== true:
-		aplicate_KnockBack()
+	if selfDeath == false:
+		rotarNavePuntero()
+		$areaDeAtaqueRange.look_at(get_global_mouse_position())
+		_input(input_event)
+		#detecta si se mantiene el click izquierdo y si el cooldown de disparo se 
+		#terminó
+		if holdLeftClick == true and coolDownLeftClick == false:
+			shootBullet()
+			#se activa del cooldown indicando que se esta enfriando para el siguiente
+			#disparo
+			coolDownLeftClick= true
+			$coolDownLeftClick.start()
+		if activateKnockBack== true and posibleKnockBack== true:
+			aplicate_KnockBack()
+		else:
+			move_and_slide()
 	else:
-		move_and_slide()
+		pass
 
 
 #Funciones basicas para animar al personaje segun donde este viendo
@@ -119,9 +126,13 @@ func aplicate_KnockBack():
 
 #desaparece al personaje del arbol de escena
 func deadPlayer():
+	selfDeath= true
+	$deathTime.start()
+	$deathPlayerSFX.play()
 	get_tree().call_group("deathMenuUi","aparecer")
+	get_tree().call_group("onPlayerDeath","playerIsDeath")
+func _on_death_time_timeout():
 	queue_free()
-	
 
 
 func _on_stop_enemy_movement_area_entered(area):
@@ -134,3 +145,5 @@ func _on_war_of_enemy_area_entered(area):
 	area.dentroDistanciaCritica()
 func _on_war_of_enemy_area_exited(area):
 	area.fueraDistanciaCritica()
+
+

@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://3eolwilx4oi7"]
+[gd_scene load_steps=6 format=3 uid="uid://3eolwilx4oi7"]
 
 [ext_resource type="Script" path="res://Scenes/Players/Bullets/bulletScript.gd" id="1_66h6t"]
-[ext_resource type="Texture2D" uid="uid://o7csblf8qaf1" path="res://icon.svg" id="2_7q351"]
+[ext_resource type="Texture2D" uid="uid://cgp32riopkqne" path="res://Scenes/Players/Bullets/bala_blanca.png" id="2_prp3m"]
+[ext_resource type="AudioStream" uid="uid://bnyhg5wn64x8a" path="res://Scenes/Players/Bullets/shooSound.mp3" id="3_elwov"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e4t1l"]
-radius = 9.21954
+radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hoift"]
-radius = 9.0
+radius = 6.0
 
 [node name="bullet" type="CharacterBody2D"]
 script = ExtResource("1_66h6t")
@@ -20,9 +21,9 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_e4t1l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -4.76837e-07)
-scale = Vector2(0.113281, 0.113281)
-texture = ExtResource("2_7q351")
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_prp3m")
 
 [node name="wall" type="Area2D" parent="."]
 collision_layer = 0
@@ -30,6 +31,10 @@ collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall"]
 shape = SubResource("CircleShape2D_hoift")
+
+[node name="shootSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_elwov")
+volume_db = -9.333
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="wall" to="." method="_on_wall_area_entered"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dn7q7id3q2b70"]
+[gd_scene load_steps=13 format=3 uid="uid://dn7q7id3q2b70"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/CannonEnemy/cannonEnemyScript.gd" id="1_k8eiu"]
 [ext_resource type="Texture2D" uid="uid://lie6h42lem5f" path="res://Scenes/Enemies/CannonEnemy/mega_cannon.png" id="2_tuyig"]
 [ext_resource type="Script" path="res://Scenes/Enemies/CannonEnemy/hitAreaScript.gd" id="3_62d8i"]
 [ext_resource type="Script" path="res://Scenes/Enemies/CannonEnemy/detectLimitAreaPlayerScript.gd" id="4_3n5lk"]
+[ext_resource type="AudioStream" uid="uid://bb1rmnlwihixh" path="res://Scenes/Enemies/deathEnemySFX.mp3" id="5_ib88h"]
 
 [sub_resource type="Animation" id="Animation_owflp"]
 length = 0.001
@@ -18,6 +19,46 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_ufgbg"]
+resource_name = "deathAnimation"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.5708, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.313726, 0.313726, 0.313726, 1), Color(0.313726, 0.313726, 0.313726, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_35l3l"]
@@ -39,6 +80,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ytj6p"]
 _data = {
 "RESET": SubResource("Animation_owflp"),
+"deathAnimation": SubResource("Animation_ufgbg"),
 "takeDamage": SubResource("Animation_35l3l")
 }
 
@@ -51,7 +93,7 @@ radius = 7.64853
 [sub_resource type="CircleShape2D" id="CircleShape2D_t6ni8"]
 radius = 11.4115
 
-[node name="CharacterBody2D" type="CharacterBody2D" groups=["cannonEnemyGroup"]]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["cannonEnemyGroup", "onPlayerDeath"]]
 scale = Vector2(2.5, 2.5)
 collision_layer = 2
 collision_mask = 0
@@ -106,6 +148,14 @@ one_shot = true
 [node name="shootCoolDown" type="Timer" parent="."]
 wait_time = 1.5
 
+[node name="deathTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="deathEnemySFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ib88h")
+
 [connection signal="timeout" from="slowMovement" to="." method="_on_slow_movement_timeout"]
 [connection signal="timeout" from="tomarDistancia" to="." method="_on_tomar_distancia_timeout"]
 [connection signal="timeout" from="shootCoolDown" to="." method="_on_shoot_cool_down_timeout"]
+[connection signal="timeout" from="deathTimer" to="." method="_on_death_timer_timeout"]

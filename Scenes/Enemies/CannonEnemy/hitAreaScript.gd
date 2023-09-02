@@ -3,7 +3,7 @@ extends Area2D
 func takeDamageBullet(damage,critic):
 	var aux= $"..".vida
 	if aux <= damage:
-		$"..".epicDeath()
+		$"..".deathStatus()
 		$"..".showDamage(damage,critic)
 	else:
 		$"..".vida = aux - damage

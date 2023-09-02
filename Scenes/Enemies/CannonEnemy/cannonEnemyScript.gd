@@ -8,6 +8,8 @@ var distanciaMinima= false
 var distanciaCritica= false
 var distanciaAsegurada= true
 var tomandoDistancia= false
+var playerDeath= false
+var death= false
 
 #Variables
 var playerPosition= Vector2(0,0)
@@ -27,14 +29,18 @@ func _ready():
 	definirDatosRandomizados()
 
 func _process(delta):
-	#var angle= (playerPosition - self.global_position).angle()
-	playerPosition= GLOBALMANAGER.posicionGlobalPersonaje - position
-	targetPlayerGraphic(delta)
-	if distanciaMinima == false and distanciaCritica == false and distanciaAsegurada == true and tomandoDistancia == false:
-		moverseAlPlayer(delta)
-	if distanciaMinima == true and distanciaCritica == true and distanciaAsegurada == false:
+	if death== true:
+		pass
+	elif playerDeath== true:
 		alejarseAlPlayer(delta)
-	
+	else:
+		playerPosition= GLOBALMANAGER.posicionGlobalPersonaje - position
+		targetPlayerGraphic(delta)
+		if distanciaMinima == false and distanciaCritica == false and distanciaAsegurada == true and tomandoDistancia == false:
+			moverseAlPlayer(delta)
+		if distanciaMinima == true and distanciaCritica == true and distanciaAsegurada == false:
+			alejarseAlPlayer(delta)
+
 
 func moverseAlPlayer(delta):
 	velocity = playerPosition.normalized() * velocidadFinal
@@ -80,7 +86,21 @@ func _on_tomar_distancia_timeout():
 	distanciaAsegurada= true
 
 
-func epicDeath():
+func playerIsDeath():
+	$shootCoolDown.stop()
+	playerDeath= true
+
+func deathStatus():
+	death= true
+	$shootCoolDown.stop()
+	disabledAreas()
+	$deathEnemySFX.play()
+	$animationEnemy.play("deathAnimation")
+	$deathTimer.start()
+func disabledAreas():
+	$hitArea.set_collision_layer_value(3,false)
+	$detectLimitAreaPlayer.set_collision_layer_value(7,false)
+func _on_death_timer_timeout():
 	queue_free()
 
 

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu2no22yyw3t3"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/newEnemy/newEnemyScript.gd" id="1_7wsau"]
+[ext_resource type="Texture2D" uid="uid://bfnyjd6wwpa03" path="res://Scenes/Enemies/newEnemy/tankRedEnemy.png" id="2_1y1l2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1up5t"]
+radius = 37.0
+
+[node name="newEnemy" type="CharacterBody2D" groups=["enemyGroup"]]
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_7wsau")
+
+[node name="colicionDelEnemigo" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1up5t")
+
+[node name="spriteDelEnemigo" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2, 2)
+texture = ExtResource("2_1y1l2")
