@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://byfqd3ldkyqvh"]
+[gd_scene load_steps=14 format=3 uid="uid://byfqd3ldkyqvh"]
 
 [ext_resource type="Script" path="res://Scenes/Players/Max´s/MaxPlayerScript.gd" id="1_s5sgb"]
 [ext_resource type="Texture2D" uid="uid://dug8bkceag6m8" path="res://Scenes/Players/Max´s/suicideShip.png" id="2_nilk4"]
 [ext_resource type="Script" path="res://Scenes/Players/Max´s/areaDeAtaqueScript.gd" id="3_lhv1y"]
 [ext_resource type="Script" path="res://Scenes/Players/Max´s/takeDamagePlayerScript.gd" id="4_ql1hm"]
+[ext_resource type="Texture2D" uid="uid://ldo6l5fmrehc" path="res://Scenes/Players/Max´s/light.png" id="5_ki58y"]
 
 [sub_resource type="Animation" id="Animation_3sjpx"]
 length = 0.001
@@ -124,8 +125,16 @@ wait_time = 0.3
 one_shot = true
 
 [node name="coolDownLeftClick" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.1
 one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1.42859, 7.62939e-06)
+scale = Vector2(1.55714, 1.28571)
+energy = 2.0
+range_item_cull_mask = 32
+shadow_item_cull_mask = 32
+texture = ExtResource("5_ki58y")
 
 [connection signal="area_entered" from="stopEnemyMovement" to="." method="_on_stop_enemy_movement_area_entered"]
 [connection signal="area_exited" from="stopEnemyMovement" to="." method="_on_stop_enemy_movement_area_exited"]

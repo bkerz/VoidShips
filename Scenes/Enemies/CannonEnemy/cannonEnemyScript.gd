@@ -29,12 +29,13 @@ func _ready():
 	definirDatosRandomizados()
 
 func _process(delta):
-	#var angle= (playerPosition - self.global_position).angle()
-	playerPosition= GLOBALMANAGER.posicionGlobalPersonaje - position
-	targetPlayerGraphic(delta)
-	if playerDeath== true:
+	if death== true:
+		pass
+	elif playerDeath== true:
 		alejarseAlPlayer(delta)
 	else:
+		playerPosition= GLOBALMANAGER.posicionGlobalPersonaje - position
+		targetPlayerGraphic(delta)
 		if distanciaMinima == false and distanciaCritica == false and distanciaAsegurada == true and tomandoDistancia == false:
 			moverseAlPlayer(delta)
 		if distanciaMinima == true and distanciaCritica == true and distanciaAsegurada == false:
@@ -89,7 +90,16 @@ func playerIsDeath():
 	$shootCoolDown.stop()
 	playerDeath= true
 
-func epicDeath():
+func deathStatus():
+	death= true
+	$shootCoolDown.stop()
+	disabledAreas()
+	$animationEnemy.play("deathAnimation")
+	$deathTimer.start()
+func disabledAreas():
+	$hitArea.set_collision_layer_value(3,false)
+	$detectLimitAreaPlayer.set_collision_layer_value(7,false)
+func _on_death_timer_timeout():
 	queue_free()
 
 

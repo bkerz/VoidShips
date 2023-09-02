@@ -5,6 +5,8 @@ var showDamagePath= preload("res://Scenes/GUI_UI/UtilitiesUI/show_damage_taken.t
 #instancias
 var basicUtilitiesInstance= basicUtilities.new()
 
+#Librerias de estados
+var libreriaDeEstados= {}
 
 #Variables ints
 var nivel
@@ -15,6 +17,9 @@ var ataqueFinal
 var velocidadFinal
 var velocidadMaxima= 200
 var velocidadMinima= 150
+
+#variables Strings
+var miEstado= "normal"
 
 #Variables flotantes
 var playerPosition= Vector2(0,0)
@@ -28,10 +33,14 @@ var playerDeath= false
 func _ready():
 	definirDatosRandomizados()
 
+
+
 func _process(delta):
+	#Si yo estoy vivo y el jugador tambien...
 	if death == false and playerDeath == false:
 		seguirAlPlayer(delta)
-	if playerDeath == true:
+	#Si estoy muerto...
+	elif playerDeath == true:
 		alejarseDelPlayer()
 
 func alejarseDelPlayer():
@@ -89,3 +98,4 @@ func disabledAreas():
 	$atkArea.set_collision_layer_value(5,false)
 func _on_death_timer_timeout():
 	queue_free()
+

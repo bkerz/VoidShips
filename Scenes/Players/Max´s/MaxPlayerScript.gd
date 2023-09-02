@@ -4,13 +4,16 @@ extends CharacterBody2D
 #Constantes
 const bulletPath= preload("res://Scenes/Players/Bullets/bullet.tscn")
 
+
+
 #Variables
 var knockBack_vector= 0
 var knockBack_force= .070
 
+
 var vida
-var ataqueMaximo=30
-var ataqueMinimo=10
+var ataqueMaximo=500
+var ataqueMinimo=200
 var speed = 400
 
 #Variables Booleans

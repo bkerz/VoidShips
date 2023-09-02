@@ -13,7 +13,9 @@ var finalDamage
 var bulletOfEnemy= false
 
 func _ready():
+
 	if bulletOfEnemy == false:
+		$shootSound.play()
 		aimPos= get_local_mouse_position()
 		$Area2D.set_collision_mask_value(3,true)
 	else:

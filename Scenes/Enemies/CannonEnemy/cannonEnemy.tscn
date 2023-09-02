@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dn7q7id3q2b70"]
+[gd_scene load_steps=12 format=3 uid="uid://dn7q7id3q2b70"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/CannonEnemy/cannonEnemyScript.gd" id="1_k8eiu"]
 [ext_resource type="Texture2D" uid="uid://lie6h42lem5f" path="res://Scenes/Enemies/CannonEnemy/mega_cannon.png" id="2_tuyig"]
@@ -19,6 +19,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
 
 [sub_resource type="Animation" id="Animation_35l3l"]
 resource_name = "takeDamage"
@@ -36,9 +48,38 @@ tracks/0/keys = {
 "values": [Color(0.721569, 0, 0.0705882, 1), Color(1, 1, 1, 1), Color(0.737255, 0, 0.054902, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_ufgbg"]
+resource_name = "deathAnimation"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.5708, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.313726, 0.313726, 0.313726, 1), Color(0.313726, 0.313726, 0.313726, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ytj6p"]
 _data = {
 "RESET": SubResource("Animation_owflp"),
+"deathAnimation": SubResource("Animation_ufgbg"),
 "takeDamage": SubResource("Animation_35l3l")
 }
 
@@ -106,6 +147,11 @@ one_shot = true
 [node name="shootCoolDown" type="Timer" parent="."]
 wait_time = 1.5
 
+[node name="deathTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="timeout" from="slowMovement" to="." method="_on_slow_movement_timeout"]
 [connection signal="timeout" from="tomarDistancia" to="." method="_on_tomar_distancia_timeout"]
 [connection signal="timeout" from="shootCoolDown" to="." method="_on_shoot_cool_down_timeout"]
+[connection signal="timeout" from="deathTimer" to="." method="_on_death_timer_timeout"]

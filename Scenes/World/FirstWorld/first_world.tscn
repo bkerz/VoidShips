@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://7k8edk04vjj"]
+[gd_scene load_steps=19 format=3 uid="uid://7k8edk04vjj"]
 
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/first_worldScript.gd" id="1_qp6ut"]
 [ext_resource type="Texture2D" uid="uid://d0itpbnd3nuol" path="res://Scenes/World/FirstWorld/earthPlanet.png" id="2_otecb"]
+[ext_resource type="Texture2D" uid="uid://bsigaycqdk17t" path="res://Scenes/World/FirstWorld/backgroundgrid.png" id="3_6l6cw"]
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/MenuGUIScript.gd" id="3_ct034"]
 [ext_resource type="PackedScene" uid="uid://br1h424kd45pe" path="res://Scenes/Players/PlayerSpawner/player_espawner.tscn" id="3_oty85"]
 [ext_resource type="PackedScene" uid="uid://cturklof8iwho" path="res://Scenes/Enemies/MineEnemy/enemyShipMine.tscn" id="4_18rdi"]
@@ -12,6 +13,9 @@
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/onDeathMenuScript.gd" id="7_g7cmy"]
 
 [sub_resource type="Theme" id="Theme_8umrj"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_efjfn"]
+light_mode = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shyln"]
 bg_color = Color(0.188235, 0.188235, 0.188235, 0.647059)
@@ -54,6 +58,15 @@ modulate = Color(0.419608, 0.419608, 0.419608, 1)
 position = Vector2(1035, 268)
 scale = Vector2(0.578788, 0.54697)
 texture = ExtResource("2_otecb")
+
+[node name="Backgroundgrid" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.133333)
+light_mask = 32
+visibility_layer = 32
+material = SubResource("CanvasItemMaterial_efjfn")
+position = Vector2(566, 308)
+scale = Vector2(0.629795, 0.633333)
+texture = ExtResource("3_6l6cw")
 
 [node name="PlayerEspawner" parent="." instance=ExtResource("3_oty85")]
 position = Vector2(548, 315)
