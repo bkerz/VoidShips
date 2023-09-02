@@ -139,7 +139,3 @@ func _on_war_of_enemy_area_entered(area):
 	area.dentroDistanciaCritica()
 func _on_war_of_enemy_area_exited(area):
 	area.fueraDistanciaCritica()
-
-
-func _on_stop_enemy_movement_input_event(viewport, event, shape_idx):
-	pass # Replace with function body.
