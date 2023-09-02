@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://7k8edk04vjj"]
+[gd_scene load_steps=23 format=3 uid="uid://7k8edk04vjj"]
 
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/first_worldScript.gd" id="1_qp6ut"]
 [ext_resource type="Texture2D" uid="uid://d0itpbnd3nuol" path="res://Scenes/World/FirstWorld/earthPlanet.png" id="2_otecb"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/MenuGUIScript.gd" id="3_ct034"]
 [ext_resource type="PackedScene" uid="uid://br1h424kd45pe" path="res://Scenes/Players/PlayerSpawner/player_espawner.tscn" id="3_oty85"]
 [ext_resource type="PackedScene" uid="uid://cturklof8iwho" path="res://Scenes/Enemies/MineEnemy/enemyShipMine.tscn" id="4_18rdi"]
-[ext_resource type="PackedScene" uid="uid://cu2no22yyw3t3" path="res://Scenes/Enemies/newEnemy/newEnemy.tscn" id="5_ec0kv"]
 [ext_resource type="PackedScene" uid="uid://dn7q7id3q2b70" path="res://Scenes/Enemies/CannonEnemy/cannonEnemy.tscn" id="5_j8t28"]
 [ext_resource type="PackedScene" uid="uid://btyec4dnrw30" path="res://Scenes/Enemies/TankEnemy/enemyShipTank.tscn" id="5_q1bxq"]
 [ext_resource type="PackedScene" uid="uid://cfj2cpyebf7ag" path="res://Scenes/EnemySpawner/enemy_spawner.tscn" id="6_7vjqr"]
@@ -94,9 +93,6 @@ material = SubResource("CanvasItemMaterial_efjfn")
 position = Vector2(566, 308)
 scale = Vector2(0.629795, 0.633333)
 texture = ExtResource("3_6l6cw")
-
-[node name="newEnemy" parent="." instance=ExtResource("5_ec0kv")]
-position = Vector2(290, 351)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("6_7vjqr")]
 enemy_list = Array[PackedScene]([ExtResource("4_18rdi"), ExtResource("5_q1bxq"), ExtResource("5_j8t28")])

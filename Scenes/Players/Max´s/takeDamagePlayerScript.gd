@@ -11,6 +11,7 @@ func takeDamage(damage,enemyPosition):
 	if invincible== false:
 		$"..".vida = $"..".vida - damage
 		get_tree().call_group("gui_Info","actualizeHpBar",float($"..".vida))
+		$"../takeDamageSFX".play()
 		$"..".knockBackTake(enemyPosition)
 	else:
 		pass

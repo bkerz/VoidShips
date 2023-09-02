@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dn7q7id3q2b70"]
+[gd_scene load_steps=13 format=3 uid="uid://dn7q7id3q2b70"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/CannonEnemy/cannonEnemyScript.gd" id="1_k8eiu"]
 [ext_resource type="Texture2D" uid="uid://lie6h42lem5f" path="res://Scenes/Enemies/CannonEnemy/mega_cannon.png" id="2_tuyig"]
 [ext_resource type="Script" path="res://Scenes/Enemies/CannonEnemy/hitAreaScript.gd" id="3_62d8i"]
 [ext_resource type="Script" path="res://Scenes/Enemies/CannonEnemy/detectLimitAreaPlayerScript.gd" id="4_3n5lk"]
+[ext_resource type="AudioStream" uid="uid://bb1rmnlwihixh" path="res://Scenes/Enemies/deathEnemySFX.mp3" id="5_ib88h"]
 
 [sub_resource type="Animation" id="Animation_owflp"]
 length = 0.001
@@ -150,6 +151,9 @@ wait_time = 1.5
 [node name="deathTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="deathEnemySFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ib88h")
 
 [connection signal="timeout" from="slowMovement" to="." method="_on_slow_movement_timeout"]
 [connection signal="timeout" from="tomarDistancia" to="." method="_on_tomar_distancia_timeout"]

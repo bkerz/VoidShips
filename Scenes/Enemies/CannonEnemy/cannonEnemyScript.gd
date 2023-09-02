@@ -94,6 +94,7 @@ func deathStatus():
 	death= true
 	$shootCoolDown.stop()
 	disabledAreas()
+	$deathEnemySFX.play()
 	$animationEnemy.play("deathAnimation")
 	$deathTimer.start()
 func disabledAreas():

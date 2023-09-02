@@ -34,6 +34,7 @@ shape = SubResource("CircleShape2D_hoift")
 
 [node name="shootSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_elwov")
+volume_db = -9.333
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="wall" to="." method="_on_wall_area_entered"]

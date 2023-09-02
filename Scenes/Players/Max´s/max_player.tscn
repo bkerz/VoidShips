@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://byfqd3ldkyqvh"]
+[gd_scene load_steps=16 format=3 uid="uid://byfqd3ldkyqvh"]
 
 [ext_resource type="Script" path="res://Scenes/Players/Max´s/MaxPlayerScript.gd" id="1_s5sgb"]
 [ext_resource type="Texture2D" uid="uid://dug8bkceag6m8" path="res://Scenes/Players/Max´s/suicideShip.png" id="2_nilk4"]
 [ext_resource type="Script" path="res://Scenes/Players/Max´s/areaDeAtaqueScript.gd" id="3_lhv1y"]
 [ext_resource type="Script" path="res://Scenes/Players/Max´s/takeDamagePlayerScript.gd" id="4_ql1hm"]
 [ext_resource type="Texture2D" uid="uid://ldo6l5fmrehc" path="res://Scenes/Players/Max´s/light.png" id="5_ki58y"]
+[ext_resource type="AudioStream" uid="uid://g2crq4oh1hmx" path="res://Scenes/Players/Max´s/takeDamageSFX.mp3" id="6_lf75w"]
+[ext_resource type="AudioStream" uid="uid://bd6v6he2la78r" path="res://Scenes/Players/Max´s/deathPlayerSFX.mp3" id="6_mk2cq"]
 
 [sub_resource type="Animation" id="Animation_3sjpx"]
 length = 0.001
@@ -128,12 +130,26 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
+[node name="deathTime" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1.42859, 7.62939e-06)
 scale = Vector2(1.55714, 1.28571)
 range_item_cull_mask = 32
 shadow_item_cull_mask = 32
 texture = ExtResource("5_ki58y")
+
+[node name="takeDamageSFX" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(1.42859, 7.62939e-06)
+scale = Vector2(1.55714, 1.28571)
+stream = ExtResource("6_lf75w")
+
+[node name="deathPlayerSFX" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(1, 1)
+stream = ExtResource("6_mk2cq")
+volume_db = 2.0
 
 [connection signal="area_entered" from="stopEnemyMovement" to="." method="_on_stop_enemy_movement_area_entered"]
 [connection signal="area_exited" from="stopEnemyMovement" to="." method="_on_stop_enemy_movement_area_exited"]
@@ -142,3 +158,4 @@ texture = ExtResource("5_ki58y")
 [connection signal="timeout" from="invincivilityTimer" to="." method="_on_invincivility_timer_timeout"]
 [connection signal="timeout" from="knockBackDuration" to="." method="_on_knock_back_duration_timeout"]
 [connection signal="timeout" from="coolDownLeftClick" to="." method="_on_cool_down_left_click_timeout"]
+[connection signal="timeout" from="deathTime" to="." method="_on_death_time_timeout"]

@@ -61,6 +61,7 @@ func playerIsDeath():
 func deathStatus():
 	death= true
 	disabledAreas()
+	$deathEnemySFX.play()
 	$animationEnemy.play("deathAnimation")
 	$deathTimer.start()
 func disabledAreas():
