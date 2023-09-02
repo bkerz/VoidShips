@@ -122,6 +122,7 @@ func aplicate_KnockBack():
 
 #desaparece al personaje del arbol de escena
 func deadPlayer():
+	get_tree().call_group("enemyGroup","deathPlayer")
 	get_tree().call_group("deathMenuUi","aparecer")
 	get_tree().call_group("onPlayerDeath","playerIsDeath")
 	queue_free()
@@ -138,3 +139,7 @@ func _on_war_of_enemy_area_entered(area):
 	area.dentroDistanciaCritica()
 func _on_war_of_enemy_area_exited(area):
 	area.fueraDistanciaCritica()
+
+
+func _on_stop_enemy_movement_input_event(viewport, event, shape_idx):
+	pass # Replace with function body.

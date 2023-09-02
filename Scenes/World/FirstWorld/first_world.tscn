@@ -1,11 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://7k8edk04vjj"]
+[gd_scene load_steps=24 format=3 uid="uid://7k8edk04vjj"]
 
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/first_worldScript.gd" id="1_qp6ut"]
 [ext_resource type="Texture2D" uid="uid://d0itpbnd3nuol" path="res://Scenes/World/FirstWorld/earthPlanet.png" id="2_otecb"]
+[ext_resource type="Texture2D" uid="uid://cgp32riopkqne" path="res://Scenes/Players/Bullets/bala_blanca.png" id="2_sp0fc"]
 [ext_resource type="Texture2D" uid="uid://bsigaycqdk17t" path="res://Scenes/World/FirstWorld/backgroundgrid.png" id="3_6l6cw"]
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/Scripts/MenuGUIScript.gd" id="3_ct034"]
 [ext_resource type="PackedScene" uid="uid://br1h424kd45pe" path="res://Scenes/Players/PlayerSpawner/player_espawner.tscn" id="3_oty85"]
 [ext_resource type="PackedScene" uid="uid://cturklof8iwho" path="res://Scenes/Enemies/MineEnemy/enemyShipMine.tscn" id="4_18rdi"]
+[ext_resource type="PackedScene" uid="uid://cu2no22yyw3t3" path="res://Scenes/Enemies/newEnemy/newEnemy.tscn" id="5_ec0kv"]
 [ext_resource type="PackedScene" uid="uid://dn7q7id3q2b70" path="res://Scenes/Enemies/CannonEnemy/cannonEnemy.tscn" id="5_j8t28"]
 [ext_resource type="PackedScene" uid="uid://btyec4dnrw30" path="res://Scenes/Enemies/TankEnemy/enemyShipTank.tscn" id="5_q1bxq"]
 [ext_resource type="PackedScene" uid="uid://cfj2cpyebf7ag" path="res://Scenes/EnemySpawner/enemy_spawner.tscn" id="6_7vjqr"]
@@ -13,6 +15,23 @@
 [ext_resource type="Script" path="res://Scenes/World/FirstWorld/onDeathMenuScript.gd" id="7_g7cmy"]
 
 [sub_resource type="Theme" id="Theme_8umrj"]
+
+[sub_resource type="Gradient" id="Gradient_uet3n"]
+offsets = PackedFloat32Array(0, 0.178218, 0.663366, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_thgkc"]
+gradient = SubResource("Gradient_uet3n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4jxjc"]
+emission_shape = 3
+emission_box_extents = Vector3(650, 325, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, 1, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.2
+color_ramp = SubResource("GradientTexture1D_thgkc")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_efjfn"]
 light_mode = 2
@@ -53,6 +72,14 @@ grow_vertical = 2
 theme = SubResource("Theme_8umrj")
 color = Color(0, 0, 0, 1)
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Fondo"]
+position = Vector2(557, 318)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_4jxjc")
+texture = ExtResource("2_sp0fc")
+lifetime = 3.0
+randomness = 1.0
+
 [node name="planetEarth" type="Sprite2D" parent="."]
 modulate = Color(0.419608, 0.419608, 0.419608, 1)
 position = Vector2(1035, 268)
@@ -68,11 +95,14 @@ position = Vector2(566, 308)
 scale = Vector2(0.629795, 0.633333)
 texture = ExtResource("3_6l6cw")
 
-[node name="PlayerEspawner" parent="." instance=ExtResource("3_oty85")]
-position = Vector2(548, 315)
+[node name="newEnemy" parent="." instance=ExtResource("5_ec0kv")]
+position = Vector2(290, 351)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("6_7vjqr")]
 enemy_list = Array[PackedScene]([ExtResource("4_18rdi"), ExtResource("5_q1bxq"), ExtResource("5_j8t28")])
+
+[node name="PlayerEspawner" parent="." instance=ExtResource("3_oty85")]
+position = Vector2(548, 315)
 
 [node name="MenuGUI" type="Control" parent="."]
 visible = false
