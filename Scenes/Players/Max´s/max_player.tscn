@@ -147,7 +147,6 @@ scale = Vector2(1.55714, 1.28571)
 stream = ExtResource("6_lf75w")
 
 [node name="deathPlayerSFX" type="AudioStreamPlayer2D" parent="."]
-scale = Vector2(1, 1)
 stream = ExtResource("6_mk2cq")
 volume_db = 2.0
 

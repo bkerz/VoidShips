@@ -25,3 +25,8 @@ func _on_timer_timeout():
 		
 	if current_seconds == 0:
 		emit_signal("timeout")
+
+func aparecer():
+	print("a")
+	$Timer.autostart= false
+	$Timer.one_shot= true
