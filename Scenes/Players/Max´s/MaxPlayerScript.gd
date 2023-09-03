@@ -5,15 +5,14 @@ extends CharacterBody2D
 const bulletPath= preload("res://Scenes/Players/Bullets/bullet.tscn")
 
 
-
 #Variables
 var knockBack_vector= 0
 var knockBack_force= .070
 
 
 var vida
-var ataqueMaximo=500
-var ataqueMinimo=200
+var ataqueMaximo=15
+var ataqueMinimo=5
 var speed = 400
 
 #Variables Booleans
@@ -145,5 +144,3 @@ func _on_war_of_enemy_area_entered(area):
 	area.dentroDistanciaCritica()
 func _on_war_of_enemy_area_exited(area):
 	area.fueraDistanciaCritica()
-
-

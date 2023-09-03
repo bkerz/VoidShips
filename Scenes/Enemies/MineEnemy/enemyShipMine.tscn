@@ -108,9 +108,11 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_66icg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_l6wtq")
 
 [node name="hitArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("3_tnmgw")
@@ -120,6 +122,7 @@ shape = SubResource("CircleShape2D_kluer")
 debug_color = Color(0.815686, 0.403922, 0, 0.419608)
 
 [node name="atkArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 16
 
