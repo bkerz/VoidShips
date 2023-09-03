@@ -92,7 +92,7 @@ _data = {
 "takeDamage": SubResource("Animation_35l3l")
 }
 
-[node name="CharacterBody2D" type="CharacterBody2D" groups=["onPlayerDeath"]]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["onPlayerDeath", "onPlayerWin"]]
 scale = Vector2(3, 3)
 collision_layer = 2
 collision_mask = 0

@@ -29,19 +29,19 @@ func _ready():
 
 #Detecta si se esta moviendo usando W/A/S/D como referencia
 func _input(event):
-	var input_direction = Input.get_vector("A","D","W","S")
-	
-	#Detecta si se clickeo el boton izquierdo del mouse
-	if event is InputEventMouseButton and event.is_action_pressed("ui_Mouse_Left"):
-		#si es asi, activa la vandera de que se esta manteniendo
-		holdLeftClick= true
-	if event is InputEventMouseButton and event.is_action_released("ui_Mouse_Left"):
-		#si se desclickea el boton izquierdo, baja esa bandera para indicar que 
-		#dejo de mantenerse
-		holdLeftClick= false
-	#Le paso la posicion del player
-	GLOBALMANAGER.posicionGlobalPersonaje = global_position
-	velocity = input_direction * speed
+		var input_direction = Input.get_vector("A","D","W","S")
+		
+		#Detecta si se clickeo el boton izquierdo del mouse
+		if event is InputEventMouseButton and event.is_action_pressed("ui_Mouse_Left"):
+			#si es asi, activa la vandera de que se esta manteniendo
+			holdLeftClick= true
+		if event is InputEventMouseButton and event.is_action_released("ui_Mouse_Left"):
+			#si se desclickea el boton izquierdo, baja esa bandera para indicar que 
+			#dejo de mantenerse
+			holdLeftClick= false
+		#Le paso la posicion del player
+		GLOBALMANAGER.posicionGlobalPersonaje = global_position
+		velocity = input_direction * speed
 
 func _process(delta):
 	if selfDeath == false:
@@ -144,3 +144,6 @@ func _on_war_of_enemy_area_entered(area):
 	area.dentroDistanciaCritica()
 func _on_war_of_enemy_area_exited(area):
 	area.fueraDistanciaCritica()
+	
+func endGameProcess():
+	selfDeath = true
