@@ -105,7 +105,12 @@ func disabledAreas():
 func _on_death_timer_timeout():
 	queue_free()
 
-
+func endGameProcess():
+	death= true
+	$shootCoolDown.stop()
+	disabledAreas()
+	$animationEnemy.play("deathAnimation")
+	$deathTimer.start()
 
 func showDamage(damage,critic):
 	var showDamageInstance= showDamagePath.instantiate()

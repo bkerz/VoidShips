@@ -24,7 +24,8 @@ func _on_timer_timeout():
 		$Label.text = label_template.format({"minutes": minutes, "seconds": seconds})
 		
 	if current_seconds == 0:
-		emit_signal("timeout")
+		get_tree().call_group("onPlayerWin","endGameProcess")
+		get_tree().call_group("winMenuUi","aparecer")
 
 func aparecer():
 	print("a")

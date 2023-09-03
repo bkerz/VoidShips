@@ -103,3 +103,8 @@ func disabledAreas():
 func _on_death_timer_timeout():
 	queue_free()
 
+func endGameProcess():
+	death= true
+	disabledAreas()
+	$animationEnemy.play("deathAnimation")
+	$deathTimer.start()

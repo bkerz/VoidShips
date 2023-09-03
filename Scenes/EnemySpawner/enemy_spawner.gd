@@ -8,9 +8,10 @@ const extremoSuperior= -50
 var enemiPosRandom= Vector2(0,0)
 var randomizePos = RandomNumberGenerator.new()
 var playerDeath= false
+var endedGame = false
 
 func _on_timer_timeout():
-	if playerDeath == false:
+	if not playerDeath and not endedGame:
 		randomizePos.randomize()
 		enemiPosRandom.x = randomizePos.randi_range(extremoIzquiero,extremoDerecho)
 		enemiPosRandom.y = extremoSuperior
@@ -23,3 +24,6 @@ func _on_timer_timeout():
 
 func playerIsDeath():
 	playerDeath= true
+
+func endGameProcess():
+	endedGame= true

@@ -71,6 +71,12 @@ func disabledAreas():
 	$atkArea.set_collision_layer_value(5,false)
 func _on_death_timer_timeout():
 	queue_free()
+	
+func endGameProcess():
+	death= true
+	disabledAreas()
+	$animationEnemy.play("deathAnimation")
+	$deathTimer.start()
 
 
 func showDamage(damage,critic):
