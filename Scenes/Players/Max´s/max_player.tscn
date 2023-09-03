@@ -46,8 +46,8 @@ _data = {
 "invisibilityAnimation": SubResource("Animation_egebt")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpmcn"]
-size = Vector2(35, 70)
+[sub_resource type="CircleShape2D" id="CircleShape2D_0a3n1"]
+radius = 90.0453
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ty0mc"]
 size = Vector2(60.0001, 32.8572)
@@ -79,13 +79,14 @@ libraries = {
 "": SubResource("AnimationLibrary_1eil3")
 }
 
-[node name="areaDeAtaqueRange" type="Area2D" parent="."]
-visible = false
+[node name="areaDeAtaqueRange" type="Area2D" parent="." groups=["levelUpPlayer"]]
+collision_layer = 8192
+collision_mask = 0
 script = ExtResource("3_lhv1y")
 
 [node name="colisionDeAtaque" type="CollisionShape2D" parent="areaDeAtaqueRange"]
-position = Vector2(62.5, -2.98023e-06)
-shape = SubResource("RectangleShape2D_wpmcn")
+position = Vector2(1.42857, 2.85714)
+shape = SubResource("CircleShape2D_0a3n1")
 debug_color = Color(0.631373, 0, 0.0627451, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -154,6 +155,7 @@ volume_db = 2.0
 [node name="nueva implementacion" type="Node2D" parent="."]
 script = ExtResource("8_augdn")
 
+[connection signal="area_entered" from="areaDeAtaqueRange" to="." method="_on_area_de_ataque_range_area_entered"]
 [connection signal="area_entered" from="stopEnemyMovement" to="." method="_on_stop_enemy_movement_area_entered"]
 [connection signal="area_exited" from="stopEnemyMovement" to="." method="_on_stop_enemy_movement_area_exited"]
 [connection signal="area_entered" from="warOfEnemy" to="." method="_on_war_of_enemy_area_entered"]

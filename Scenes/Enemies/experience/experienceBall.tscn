@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://xqw6ewhd3tqm"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/experience/experienceBallScript.gd" id="1_4w6i2"]
+[ext_resource type="Texture2D" uid="uid://dmjaq17sj55be" path="res://Scenes/Enemies/experience/experienceBallSprite.png" id="2_5omsi"]
+[ext_resource type="Script" path="res://Scenes/Enemies/experience/areaExperienceBallScript.gd" id="3_io1u8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ot0j"]
+radius = 3.0
+
+[node name="experienceBall" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_4w6i2")
+
+[node name="ExperienceBallSprite" type="Sprite2D" parent="."]
+modulate = Color(0.94902, 0.737255, 0, 1)
+texture_filter = 1
+position = Vector2(0, -4.76837e-07)
+scale = Vector2(0.921875, 0.635417)
+texture = ExtResource("2_5omsi")
+
+[node name="areaExperienceBall" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 8192
+script = ExtResource("3_io1u8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areaExperienceBall"]
+texture_filter = 1
+shape = SubResource("CircleShape2D_1ot0j")
+
+[connection signal="area_entered" from="areaExperienceBall" to="." method="_on_area_experience_ball_area_entered"]

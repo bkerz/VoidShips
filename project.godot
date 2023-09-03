@@ -99,4 +99,5 @@ derecha={
 2d_physics/layer_5="playerReciveHit"
 2d_physics/layer_7="cannonDistanceArea"
 2d_physics/layer_9="bulletWall"
+2d_physics/layer_10="experienceArea"
 2d_physics/layer_12="BulletsHit"

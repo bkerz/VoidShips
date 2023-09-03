@@ -7,6 +7,7 @@ var showDamagePath= preload("res://Scenes/GUI_UI/UtilitiesUI/show_damage_taken.t
 #Variables
 var playerPosition= Vector2(0,0)
 var nivel
+var givenExperience= 20
 var vida= 100
 var ataqueMaximo= 20
 var ataqueMinimo= 15
@@ -64,6 +65,7 @@ func deathStatus():
 	$deathEnemySFX.play()
 	$animationEnemy.play("deathAnimation")
 	$deathTimer.start()
+	dropExperience()
 func disabledAreas():
 	$hitArea.set_collision_layer_value(3,false)
 	$atkArea.set_collision_layer_value(5,false)
@@ -86,6 +88,9 @@ func showDamage(damage,critic):
 func targetPlayerGraphic(delta):
 	var anguloA= $".".transform.x.angle_to(playerPosition)
 	$".".rotate(sign(anguloA) * min(delta * velocidadRotacion, abs(anguloA)))
+
+func dropExperience():
+	get_parent().add_child(basicUtilitiesInstance.spawnExperienceBall($".".global_position,givenExperience))
 
 
 func _on_atk_area_area_entered(area):

@@ -11,6 +11,7 @@ var libreriaDeEstados= {}
 #Variables ints
 var nivel
 var vida= 20
+var givenExperience= 10
 var ataqueMaximo= 5
 var ataqueMinimo= 10
 var ataqueFinal
@@ -66,7 +67,6 @@ func definirDatosRandomizados():
 
 
 
-
 func showDamage(damage,critic):
 	var showDamageInstance= showDamagePath.instantiate()
 	showDamageInstance.showDamage(damage,critic)
@@ -85,15 +85,18 @@ func _on_atk_area_area_entered(area):
 		area.takeDamage(ataqueFinal,$".".position)
 
 
+func dropExperience():
+	get_parent().add_child(basicUtilitiesInstance.spawnExperienceBall($".".global_position,givenExperience))
+
 func playerIsDeath():
 	playerDeath= true
-
 func deathStatus():
 	death= true
 	disabledAreas()
 	$deathEnemySFX.play()
 	$animationEnemy.play("deathAnimation")
 	$deathTimer.start()
+	dropExperience()
 func disabledAreas():
 	$hitArea.set_collision_layer_value(3,false)
 	$atkArea.set_collision_layer_value(5,false)

@@ -9,7 +9,7 @@ const bulletPath= preload("res://Scenes/Players/Bullets/bullet.tscn")
 var knockBack_vector= 0
 var knockBack_force= .070
 
-
+var nivel= 0
 var vida
 var ataqueMaximo=15
 var ataqueMinimo=5
@@ -76,6 +76,10 @@ func asignarHud():
 	get_parent().add_child(hudInstance)
 	get_tree().call_group("gui_Info","actualizeHpBar",float(vida))
 
+
+func levelUpPlayer():
+	nivel= nivel + 1
+	get_tree().call_group("gui_Info","actualizeLevelPlayer",nivel)
 
 #Instancia y "dispara" una escena de bullet dandosela como hijo a su padre
 func shootBullet():
@@ -144,6 +148,9 @@ func _on_war_of_enemy_area_entered(area):
 	area.dentroDistanciaCritica()
 func _on_war_of_enemy_area_exited(area):
 	area.fueraDistanciaCritica()
-	
+
+func _on_area_de_ataque_range_area_entered(area):
+	area.takeExperience()
+
 func endGameProcess():
 	selfDeath = true
