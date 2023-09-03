@@ -6,6 +6,7 @@
 script = ExtResource("1_baics")
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 autostart = true
 
 [node name="Label" type="Label" parent="."]
