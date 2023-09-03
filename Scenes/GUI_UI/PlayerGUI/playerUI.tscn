@@ -337,5 +337,4 @@ collision_mask = 512
 position = Vector2(576.5, 27)
 shape = SubResource("RectangleShape2D_td5gh")
 
-[connection signal="draw" from="." to="." method="_on_draw"]
 [connection signal="area_entered" from="takeExperience" to="." method="_on_take_experience_area_entered"]

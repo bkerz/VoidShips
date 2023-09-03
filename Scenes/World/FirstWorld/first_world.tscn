@@ -335,6 +335,7 @@ shape = SubResource("RectangleShape2D_ea67h")
 
 [node name="Timer" parent="." instance=ExtResource("7_3pbfn")]
 position = Vector2(1085, 13)
+minutes_time = 3
 
 [connection signal="button_down" from="MenuGUI/Seguir" to="MenuGUI" method="_on_seguir_button_down"]
 [connection signal="button_down" from="MenuGUI/Salir" to="MenuGUI" method="_on_salir_button_down"]

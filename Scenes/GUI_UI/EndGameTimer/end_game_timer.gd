@@ -28,6 +28,5 @@ func _on_timer_timeout():
 		get_tree().call_group("winMenuUi","aparecer")
 
 func aparecer():
-	print("a")
 	$Timer.autostart= false
 	$Timer.one_shot= true

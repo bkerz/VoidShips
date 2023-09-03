@@ -11,7 +11,6 @@ const liveLabelText= "HP: "
 
 func _ready():
 	$HudUI/LVL_Label/levelBar.max_value= experienceMaxValue
-	print($HudUI/LVL_Label/levelBar.global_position)
 	$HudUI/HP_Label/HP_Bar.max_value= GLOBALMANAGER.playerMaxLife
 	global_position = Vector2(0,0)
 
@@ -46,9 +45,3 @@ func _on_take_experience_area_entered(area):
 	area.takeExperience()
 func takeExperience(amount):
 	actualizeExperienceBar(amount)
-
-
-
-
-func _on_draw():
-	print("mas nivel")
