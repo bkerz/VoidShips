@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://byfqd3ldkyqvh"]
+[gd_scene load_steps=17 format=3 uid="uid://byfqd3ldkyqvh"]
 
 [ext_resource type="Script" path="res://Scenes/Players/Max´s/MaxPlayerScript.gd" id="1_s5sgb"]
 [ext_resource type="Texture2D" uid="uid://dug8bkceag6m8" path="res://Scenes/Players/Max´s/suicideShip.png" id="2_nilk4"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ldo6l5fmrehc" path="res://Scenes/Players/Max´s/light.png" id="5_ki58y"]
 [ext_resource type="AudioStream" uid="uid://g2crq4oh1hmx" path="res://Scenes/Players/Max´s/takeDamageSFX.mp3" id="6_lf75w"]
 [ext_resource type="AudioStream" uid="uid://bd6v6he2la78r" path="res://Scenes/Players/Max´s/deathPlayerSFX.mp3" id="6_mk2cq"]
+[ext_resource type="Script" path="res://Scenes/Players/Max´s/nueva implementacion.gd" id="8_augdn"]
 
 [sub_resource type="Animation" id="Animation_3sjpx"]
 length = 0.001
@@ -149,6 +150,9 @@ stream = ExtResource("6_lf75w")
 [node name="deathPlayerSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_mk2cq")
 volume_db = 2.0
+
+[node name="nueva implementacion" type="Node2D" parent="."]
+script = ExtResource("8_augdn")
 
 [connection signal="area_entered" from="stopEnemyMovement" to="." method="_on_stop_enemy_movement_area_entered"]
 [connection signal="area_exited" from="stopEnemyMovement" to="." method="_on_stop_enemy_movement_area_exited"]
