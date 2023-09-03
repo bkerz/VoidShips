@@ -14,6 +14,7 @@ var death= false
 #Variables
 var playerPosition= Vector2(0,0)
 var nivel
+var givenExperience= 30
 var vida= 15
 var ataqueMaximo= 5
 var ataqueMinimo= 10
@@ -97,6 +98,7 @@ func deathStatus():
 	$deathEnemySFX.play()
 	$animationEnemy.play("deathAnimation")
 	$deathTimer.start()
+	dropExperience()
 func disabledAreas():
 	$hitArea.set_collision_layer_value(3,false)
 	$detectLimitAreaPlayer.set_collision_layer_value(7,false)
@@ -117,6 +119,8 @@ func targetPlayerGraphic(delta):
 	var anguloA= $".".transform.x.angle_to(playerPosition)
 	$".".rotate(sign(anguloA) * min(delta * velocidadRotacion, abs(anguloA)))
 
+func dropExperience():
+	get_parent().add_child(basicUtilitiesInstance.spawnExperienceBall($".".global_position,givenExperience))
 
 func shootBullet():
 	var bulletInstance= bulletPath.instantiate()
