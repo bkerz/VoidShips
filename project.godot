@@ -22,6 +22,7 @@ DIALOGOMANAGER="*res://Singletons/DIALOGOSMANAGER.gd"
 
 [display]
 
+window/size/mode=3
 window/size/resizable=false
 
 [input]

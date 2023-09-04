@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cms6jytji06mc"]
+[gd_scene load_steps=4 format=3 uid="uid://cms6jytji06mc"]
 
 [ext_resource type="Script" path="res://Scenes/GUI_UI/MainUI/mainMenuScript.gd" id="1_sp7e6"]
+[ext_resource type="FontFile" uid="uid://cdmfsji4q20u4" path="res://Fonts/ChillPixels-Maximal.otf" id="2_c3mxt"]
+[ext_resource type="PackedScene" uid="uid://dygotfdixd1xq" path="res://Pointers/Pointer.tscn" id="3_67w6i"]
 
 [node name="MenuPrincipal" type="Node2D"]
 script = ExtResource("1_sp7e6")
@@ -24,6 +26,8 @@ offset_right = 167.0
 offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_c3mxt")
+theme_override_font_sizes/font_size = 20
 text = "Jugar"
 
 [node name="Cerrar" type="Button" parent="Control"]
@@ -38,7 +42,10 @@ offset_top = -31.0
 offset_right = 21.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_c3mxt")
 text = "Salir"
+
+[node name="CustomPointer" parent="." instance=ExtResource("3_67w6i")]
 
 [connection signal="button_down" from="Control/Iniciar" to="." method="_on_iniciar_button_down"]
 [connection signal="button_down" from="Control/Cerrar" to="." method="_on_cerrar_button_down"]

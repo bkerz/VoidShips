@@ -1,9 +1,15 @@
 extends Node2D
 
+func _process(delta):
+	if $EscenaGUI/MaxSeleccion.is_hovered() or $EscenaGUI/iniciarElMundo.is_hovered() or $"EscenaGUI/Volver al menu inicial".is_hovered():
+		get_tree().call_group("PointerGroup","ShowActive")
+	else:
+		get_tree().call_group("PointerGroup","ShowInactive")
 
 #Desactiva el boton para iniciar el mundo, hasta que selecciones un personaje
 func _ready():
 	$EscenaGUI/iniciarElMundo.disabled= true
+	$CustomPointer.type = 1
 
 #Notifica al GLOBALMANAGER que se selecciono un personaje y habilita el boton 
 #De iniciar el mundo
