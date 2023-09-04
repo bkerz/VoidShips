@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dygotfdixd1xq"]
+
+[ext_resource type="Script" path="res://Pointers/Pointer.gd" id="1_coie7"]
+[ext_resource type="Texture2D" uid="uid://chngjva5d5ev0" path="res://Pointers/HexagonPointerStar.png" id="2_ltg14"]
+[ext_resource type="Texture2D" uid="uid://bgbaksg53x4hp" path="res://Pointers/HexagonPointerPurple.png" id="3_6bai1"]
+[ext_resource type="Texture2D" uid="uid://b5etx8664ax0i" path="res://Pointers/HexagonPointerBlue.png" id="4_o625i"]
+[ext_resource type="Texture2D" uid="uid://tu8oc8cwf37d" path="res://Pointers/MenuPointerActive.png" id="5_sga7w"]
+[ext_resource type="Texture2D" uid="uid://bupbs0xl7kv64" path="res://Pointers/MenuPointerInactive.png" id="6_o0kg3"]
+
+[node name="CustomPointer" type="Node2D" groups=["PointerGroup"]]
+script = ExtResource("1_coie7")
+
+[node name="InGame" type="Node2D" parent="."]
+scale = Vector2(1.5, 1.5)
+
+[node name="Center" type="Sprite2D" parent="InGame"]
+texture_filter = 1
+texture = ExtResource("2_ltg14")
+
+[node name="Hexagon1" type="Sprite2D" parent="InGame"]
+texture_filter = 1
+texture = ExtResource("3_6bai1")
+
+[node name="Hexagon2" type="Sprite2D" parent="InGame"]
+texture_filter = 1
+texture = ExtResource("4_o625i")
+
+[node name="InMenu" type="Node2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+
+[node name="Active" type="Sprite2D" parent="InMenu"]
+texture_filter = 1
+position = Vector2(23, 21)
+texture = ExtResource("5_sga7w")
+
+[node name="Inactive" type="Sprite2D" parent="InMenu"]
+texture_filter = 1
+position = Vector2(23, 21)
+texture = ExtResource("6_o0kg3")

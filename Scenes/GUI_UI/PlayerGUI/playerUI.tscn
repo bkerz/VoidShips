@@ -1,8 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://cad8oxbpfuctf"]
+[gd_scene load_steps=19 format=3 uid="uid://cad8oxbpfuctf"]
 
 [ext_resource type="Script" path="res://Scenes/GUI_UI/PlayerGUI/playerUIScript.gd" id="1_arrvw"]
-
-[sub_resource type="FontVariation" id="FontVariation_oxq5c"]
+[ext_resource type="FontFile" uid="uid://cdmfsji4q20u4" path="res://Fonts/ChillPixels-Maximal.otf" id="2_wcbg0"]
+[ext_resource type="PackedScene" uid="uid://dygotfdixd1xq" path="res://Pointers/Pointer.tscn" id="3_au0bp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4tsg"]
 bg_color = Color(0.337255, 0.584314, 0, 1)
@@ -208,6 +208,8 @@ size = Vector2(587, 10)
 [node name="playerUI" type="Node2D" groups=["barTakenExperience", "gui_Info"]]
 script = ExtResource("1_arrvw")
 
+[node name="CustomPointer" parent="." instance=ExtResource("3_au0bp")]
+
 [node name="HudUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -221,7 +223,7 @@ offset_top = 24.0
 offset_right = 234.0
 offset_bottom = 51.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontVariation_oxq5c")
+theme_override_fonts/font = ExtResource("2_wcbg0")
 text = "HP: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -262,6 +264,7 @@ offset_left = 17.0
 offset_top = 63.0
 offset_right = 229.0
 offset_bottom = 86.0
+theme_override_fonts/font = ExtResource("2_wcbg0")
 theme_override_font_sizes/font_size = 13
 text = "MP: 120"
 horizontal_alignment = 1
@@ -300,6 +303,7 @@ offset_top = 24.0
 offset_right = 24.0
 offset_bottom = 76.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_wcbg0")
 text = "LVL: 0"
 vertical_alignment = 1
 
