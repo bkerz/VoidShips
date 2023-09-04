@@ -257,6 +257,7 @@ libraries = {
 }
 
 [node name="MP_Label" type="Label" parent="HudUI"]
+visible = false
 layout_mode = 0
 offset_left = 17.0
 offset_top = 63.0

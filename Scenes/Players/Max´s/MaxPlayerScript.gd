@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 #Constantes
 const bulletPath= preload("res://Scenes/Players/Bullets/bullet.tscn")
-
+const buffingClassInstance= preload("res://Classes/buff_Debuff.gd")
 
 #Variables
 var knockBack_vector= 0
@@ -154,3 +154,7 @@ func _on_area_de_ataque_range_area_entered(area):
 
 func endGameProcess():
 	selfDeath = true
+
+
+func buff():
+	vida= buffingClassInstance.aumentoDeVidaDiezPuntos(vida)
