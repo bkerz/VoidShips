@@ -2,11 +2,14 @@ extends Node2D
 
 #CONSTANTES INTS
 const lifeMaxPJ= GLOBALMANAGER.playerMaxLife
-const experienceMaxValue= 1000
+
 
 #Strings
 const levelLabelText= "LVL: "
 const liveLabelText= "HP: "
+
+#VARIABLES
+var experienceMaxValue= 200
 
 
 func _ready():
@@ -19,11 +22,14 @@ func actualizeLevelPlayer(amount):
 
 func actualizeExperienceBar(amount):
 	var aux= $HudUI/LVL_Label/levelBar.value
+	
+	print(aux)
 	if aux >= experienceMaxValue:
 		$HudUI/LVL_Label/levelBar.set_value_no_signal(0)
 		get_tree().call_group("playerGroup","levelUpPlayer")
+		exponential()
 	else:
-		$HudUI/LVL_Label/levelBar.set_value_no_signal(float(aux + amount * 5))
+		$HudUI/LVL_Label/levelBar.set_value_no_signal(float(aux + amount))
 
 func actualizeHpBar(amount):
 	$HudUI/HP_Label/HP_Bar.set_value_no_signal(amount)
@@ -45,3 +51,9 @@ func _on_take_experience_area_entered(area):
 	area.takeExperience()
 func takeExperience(amount):
 	actualizeExperienceBar(amount)
+
+
+func exponential():
+	experienceMaxValue= experienceMaxValue + (experienceMaxValue / 2)
+	$HudUI/LVL_Label/levelBar.max_value= experienceMaxValue
+	print(experienceMaxValue)
